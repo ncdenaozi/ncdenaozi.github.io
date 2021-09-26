@@ -75,7 +75,7 @@ Speed is quite slow, optimal solution is that we only need to reverse half of th
 ## 13. Roman to Integer
 A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small but things like IV is actually small to large, so have a memory to locate the last ROMAN digit.
 **Pity that leetcode need premium to unlock the standard solution.**
-`int romanToInt(string s) {
+` int romanToInt(string s) {
         unordered_map<char,int> mp={pair('I',1),pair('V',5),pair('X',10),pair('L',50),pair('C',100),pair('D',500),pair('M',1000)};
         int result=0;
         
@@ -88,13 +88,13 @@ A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small 
         }
         return result; 
     }
-};`
+}; `
 
 
 ## 14. Longest Common Prefix
 Brute force with a decoder-like program, just runs the whole comparison char by char.
 standard solution is using **divide and conquer**, I like the idea but the implementation could be fussy.
-`string longestCommonPrefix(vector<string>& strs) {
+` string longestCommonPrefix(vector<string>& strs) {
         if(strs.size()==1)
             return strs[0];
         string result;
@@ -111,7 +111,7 @@ standard solution is using **divide and conquer**, I like the idea but the imple
         }
         return result;
     }
-};`
+}; `
     
     
 
