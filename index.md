@@ -1,21 +1,5 @@
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-
-
 # Leetcode notes
+Reach me with ncdenaozi@outlook.com
 
 ## 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
@@ -117,3 +101,21 @@ standard solution is using **divide and conquer**, I like the idea but the imple
 
 
 
+
+# TEMPLATE
+
+Syntax highlighted code block
+
+# Header 1
+## Header 2
+### Header 3
+
+- Bulleted
+- List
+
+1. Numbered
+2. List
+
+**Bold** and _Italic_ and `Code` text
+
+[Link](url) and ![Image](src)
