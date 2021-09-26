@@ -27,7 +27,7 @@ use brutal force to solve this method, note that there already exists a macro ca
             return result;
     }`
     
-## 7. Palindrome Number
+## 9. Palindrome Number
 use simple vector not stack. I thought vector may be easier to control with head&tail pointer because it is quite difficult to remember the number poped out of stack, probably need another memory list?
 Speed is quite slow, optimal solution is that we only need to reverse half of the number, kind of tricky one.
 `bool isPalindrome(int x) {
@@ -97,7 +97,56 @@ standard solution is using **divide and conquer**, I like the idea but the imple
     }
 }; `
     
-    
+  
+
+
+## 20. Valid Parentheses
+I fail for the first time because I am thinking how can I deal with the right side parenthese in the stack. But then I found out that only left-side parentheses should be pushed into the stack and the right-side is only used as a comparison.
+`bool isValid(string s) {`
+`        if(s.size()%2==1)
+            return false;
+        
+        unordered_map<char,char> mp={pair('(',')'),pair('[',']'),pair('{','}')};
+        
+        stack<char> stk;
+        char x;
+        
+        for(int i=0;i<s.size();i++){
+            //left side
+            if(s[i]=='(' or s[i]=='[' or s[i]=='{')
+                stk.push(s[i]);
+            else{
+            //right side
+                if(stk.size()==0)
+                    return false;
+                    
+                switch(s[i]){
+                    case ')':
+                        x=stk.top();
+                        stk.pop();
+                        if(x!='(')
+                            return false;
+                        break;
+                    case '}':
+                        x=stk.top();
+                        stk.pop();
+                        if(x!='{')
+                            return false;
+                        break;
+                    case ']':
+                        x=stk.top();
+                        stk.pop();
+                        if(x!='[')
+                            return false;
+                        break;
+                }
+            }
+        }
+        if(stk.empty())
+            return true;
+        else
+            return false;
+}   `
 
 
 
