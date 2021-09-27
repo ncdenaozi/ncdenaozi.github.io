@@ -148,6 +148,22 @@ I fail for the first time because I am thinking how can I deal with the right si
             return false;
 }   `
 
+## 26. Remove Duplicates from Sorted Array
+Use std::vector.erase(vector.begin()+i) to delete one element from the space. Note that after delete operation, the position and the size both reduce itself so i-- is needed.
+Speed is quite slow, standard solution is in JAVA.
+`
+    int removeDuplicates(vector<int>& nums) {
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]<=nums[i-1]){
+                nums.erase(nums.begin()+i);
+                i--;
+            }
+        }
+        return nums.size();
+    }
+`
+
+
 
 
 
