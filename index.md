@@ -163,6 +163,38 @@ Speed is quite slow, standard solution is in JAVA.
     }
 `
 
+## 27. Remove Element
+Almost same as problem 26.
+`
+     int removeElement(vector<int>& nums, int val) {
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==val){
+                nums.erase(nums.begin()+i);
+                i--;
+            }
+        }
+        return nums.size();
+    }
+`
+
+## 28. implement strStr()
+Use std::string.compare(int position, int length, string substring) and traverse the haystack, there is a lot of corner case so add a few conditions.
+`
+     int strStr(string haystack, string needle) {
+        if(needle.size()==0)
+            return 0;
+        
+        if(haystack.size()<needle.size())
+            return -1;
+        
+        for(int i=0;i<haystack.size();i++){
+            if(haystack.compare(i,needle.size(),needle)==0)
+                return i;
+        }
+        return -1;
+    }
+
+`
 
 
 
