@@ -196,8 +196,42 @@ Use std::string.compare(int position, int length, string substring) and traverse
 
 `
 
+## 35. Search Insert Position
+A simple binary search and output the lower bound for not-found result;
+`
+     int searchInsert(vector<int>& nums, int target) {
+        int start=0;
+        int end=nums.size()-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(nums[mid]==target)
+                return mid;
+            if(nums[mid]<target)
+                start=mid+1;
+            else
+                end=mid-1;
+        }
+        return start; // only difference between the downside one instead of -1
+    }
+`
 
 
+## 704. Binary search
+Almost same as simple binary search, the time complexity is O(logn) for already sorted array.
+`
+     int search(vector<int>& nums, int target) {
+        int left=0;
+        int pivot=0;
+        int right=nums.size()-1;
+        while(left<=right){
+            pivot=(left+right)/2; //pivot=left+(right-left)/2 can deal with integer overflow
+            if (nums[pivot] == target ) return pivot;
+            else if(nums[pivot] < target ) left=pivot+1;
+            else if(nums[pivot] > target ) right=pivot-1;           
+        }
+        return -1;
+    }
+`
 
 # TEMPLATE
 
