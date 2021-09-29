@@ -233,6 +233,50 @@ Almost same as simple binary search, the time complexity is O(logn) for already 
     }
 `
 
+##58. Length of Last Word
+use two pointer to identify the space, right pointer is the rightmost first non-space char and left pointer is the rightmost near-right sapce char.
+`
+     int lengthOfLastWord(string s) {
+        int right=s.size()-1;
+        while(s[right]==' '){
+            right--;
+        }
+        
+        int left=right-1;
+        while(left>=0){
+            if(s[left]==' ')
+                break;
+            left--;
+        }
+        
+        return right-left;
+    }
+`
+
+66. Plus one
+An idea of carryout, note that the last carryout means you need extra 1 added to the front of vector which is the first digits.
+`
+     vector<int> plusOne(vector<int>& digits) {
+        int carryout=0;
+        digits[digits.size()-1]++;
+        for(int i=digits.size()-1;i>=0;i--){
+            if(carryout==1){
+                digits[i]++;
+                carryout=0;
+            }
+            if(digits[i]==10){
+                digits[i]=0;
+                carryout=1;
+            }
+        }
+        if(carryout==1){
+            digits.insert(digits.begin(),1);
+        }
+        return digits;
+    }
+`
+
+
 # TEMPLATE
 
 Syntax highlighted code block
