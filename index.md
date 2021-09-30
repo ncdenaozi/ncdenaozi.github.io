@@ -369,6 +369,89 @@ int climbStairs(int n) {
         
         return 0;
     }
+                     
+## 83. Remove Duplicates from Sorted List
+Use a memory to store the last smaller node since the list is non-decreasing order. Special case is that the end of list but there is a equal between memory and temp you need to free memory->next.
+                      
+ListNode* deleteDuplicates(ListNode* head) {
+        if(head==nullptr)
+            return head;
+        
+        ListNode* temp=head;
+        ListNode* memory=head;
+        
+        if(temp->next){
+            temp=temp->next;
+        }
+        while(temp){
+            if(temp->val > memory->val){
+                memory->next=temp;
+                memory=memory->next;
+            }else if(temp->val==memory->val and temp->next==nullptr){
+                memory->next=nullptr;
+            }
+            
+            temp=temp->next;
+        }
+        return head;
+    }                      
+
+## 88. Merge Sorted Array
+Use a easy approach to push the original array behind the inserted position.
+ 
+ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for(int x:nums2){
+            int i=0;
+            while(i<m){
+                if(x>=nums1[i])
+                    i++;
+                else
+                    break;
+            }
+            
+            for(int k=m-1;k>=i;k--){
+                int temp=nums1[k];
+                nums1[k+1]=temp;
+                nums1[k]=-1;
+            }
+            
+            nums1[i]=x;
+            m++;
+        }
+    }
+ 
+## 94. Binary Tree Inorder Traversal
+Use reference to pass the vector parameter.
+ 
+ void Traverse(TreeNode* &root, vector<int> &result){
+        if(root->left)
+            Traverse(root->left,result);
+        result.push_back(root->val);
+        if(root->right)
+            Traverse(root->right,result);
+    }
+    
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        if(root==nullptr)
+            return result;
+        Traverse(root,result);
+        return result;
+    }
+ 
+## 100. Same Tree
+ Tricky method I think, there is a lot of corner case.
+bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==nullptr and q==nullptr)
+            return true;
+        else if(p==nullptr || q==nullptr)
+            return false;
+        else if(p->val!=q->val)
+            return false;
+        else
+            return isSameTree(p->right,q->right) and isSameTree(p->left,q->left);
+    }
+ 
 
 
 
