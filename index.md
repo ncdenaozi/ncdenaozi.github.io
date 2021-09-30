@@ -4,7 +4,9 @@ Reach me with ncdenaozi@outlook.com
 ## 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
 **really bad idea not to use a stack instead of a vector :<**
-`int reverse(int x) {
+
+
+ int reverse(int x) {
         
         vector<int> digit;
         double result=0;
@@ -25,12 +27,14 @@ use brutal force to solve this method, note that there already exists a macro ca
             return 0;
         else
             return result;
-    }`
+    }
+    
     
 ## 9. Palindrome Number
 use simple vector not stack. I thought vector may be easier to control with head&tail pointer because it is quite difficult to remember the number poped out of stack, probably need another memory list?
 Speed is quite slow, optimal solution is that we only need to reverse half of the number, kind of tricky one.
-`bool isPalindrome(int x) {
+
+bool isPalindrome(int x) {
         if(x<0)
             return false;
         
@@ -54,12 +58,13 @@ Speed is quite slow, optimal solution is that we only need to reverse half of th
             }    
         }
         return true;
-    }`
+        }
     
 ## 13. Roman to Integer
 A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small but things like IV is actually small to large, so have a memory to locate the last ROMAN digit.
 **Pity that leetcode need premium to unlock the standard solution.**
-` int romanToInt(string s) {
+
+int romanToInt(string s) {
         unordered_map<char,int> mp={pair('I',1),pair('V',5),pair('X',10),pair('L',50),pair('C',100),pair('D',500),pair('M',1000)};
         int result=0;
         
@@ -72,13 +77,13 @@ A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small 
         }
         return result; 
     }
-}; `
-
+}; 
 
 ## 14. Longest Common Prefix
 Brute force with a decoder-like program, just runs the whole comparison char by char.
 standard solution is using **divide and conquer**, I like the idea but the implementation could be fussy.
-` string longestCommonPrefix(vector<string>& strs) {
+
+string longestCommonPrefix(vector<string>& strs) {
         if(strs.size()==1)
             return strs[0];
         string result;
@@ -95,15 +100,16 @@ standard solution is using **divide and conquer**, I like the idea but the imple
         }
         return result;
     }
-}; `
+}; 
     
   
 
 
 ## 20. Valid Parentheses
 I fail for the first time because I am thinking how can I deal with the right side parenthese in the stack. But then I found out that only left-side parentheses should be pushed into the stack and the right-side is only used as a comparison.
-`bool isValid(string s) {`
-`        if(s.size()%2==1)
+                                     
+bool isValid(string s) {
+       if(s.size()%2==1)
             return false;
         
         unordered_map<char,char> mp={pair('(',')'),pair('[',']'),pair('{','}')};
@@ -146,12 +152,12 @@ I fail for the first time because I am thinking how can I deal with the right si
             return true;
         else
             return false;
-}   `
+}
 
 ## 26. Remove Duplicates from Sorted Array
 Use std::vector.erase(vector.begin()+i) to delete one element from the space. Note that after delete operation, the position and the size both reduce itself so i-- is needed.
 Speed is quite slow, standard solution is in JAVA.
-`
+
     int removeDuplicates(vector<int>& nums) {
         for(int i=1;i<nums.size();i++){
             if(nums[i]<=nums[i-1]){
@@ -161,11 +167,10 @@ Speed is quite slow, standard solution is in JAVA.
         }
         return nums.size();
     }
-`
 
 ## 27. Remove Element
 Almost same as problem 26.
-`
+
      int removeElement(vector<int>& nums, int val) {
         for(int i=0;i<nums.size();i++){
             if(nums[i]==val){
@@ -175,12 +180,12 @@ Almost same as problem 26.
         }
         return nums.size();
     }
-`
+
 
 ## 28. implement strStr()
 Use std::string.compare(int position, int length, string substring) and traverse the haystack, there is a lot of corner case so add a few conditions.
-`
-     int strStr(string haystack, string needle) {
+     
+int strStr(string haystack, string needle) {
         if(needle.size()==0)
             return 0;
         
@@ -194,12 +199,11 @@ Use std::string.compare(int position, int length, string substring) and traverse
         return -1;
     }
 
-`
 
 ## 35. Search Insert Position
 A simple binary search and output the lower bound for not-found result;
-`
-     int searchInsert(vector<int>& nums, int target) {
+     
+int searchInsert(vector<int>& nums, int target) {
         int start=0;
         int end=nums.size()-1;
         while(start<=end){
@@ -213,13 +217,12 @@ A simple binary search and output the lower bound for not-found result;
         }
         return start; // only difference between the downside one instead of -1
     }
-`
 
 
 ## 704. Binary search
 Almost same as simple binary search, the time complexity is O(logn) for already sorted array.
-`
-     int search(vector<int>& nums, int target) {
+
+int search(vector<int>& nums, int target) {
         int left=0;
         int pivot=0;
         int right=nums.size()-1;
@@ -231,11 +234,10 @@ Almost same as simple binary search, the time complexity is O(logn) for already 
         }
         return -1;
     }
-`
 
-##58. Length of Last Word
+## 58. Length of Last Word
 use two pointer to identify the space, right pointer is the rightmost first non-space char and left pointer is the rightmost near-right sapce char.
-`
+
      int lengthOfLastWord(string s) {
         int right=s.size()-1;
         while(s[right]==' '){
@@ -251,11 +253,11 @@ use two pointer to identify the space, right pointer is the rightmost first non-
         
         return right-left;
     }
-`
 
-66. Plus one
+
+## 66. Plus one
 An idea of carryout, note that the last carryout means you need extra 1 added to the front of vector which is the first digits.
-`
+
      vector<int> plusOne(vector<int>& digits) {
         int carryout=0;
         digits[digits.size()-1]++;
@@ -274,7 +276,100 @@ An idea of carryout, note that the last carryout means you need extra 1 added to
         }
         return digits;
     }
-`
+
+
+## 67. Add binary
+define a single digit function to add one digit together.
+
+char addTwoBinaryNumbers(char a, char b, int& carry){
+        if(a == '0' && b == '0')
+        {
+            if(carry > 0){
+                carry = 0;
+                return '1';
+            }
+            return '0';
+        }
+        else if(a == '0' && b == '1' || a=='1' && b=='0'){
+            if(carry > 0){
+                carry = 1;
+                return '0';
+            }
+            return '1';
+        }
+        else if(a=='1' && b == '1'){
+            if(carry > 0){
+                carry = 1;
+                return '1';
+            }
+            carry = 1;
+            return '0';
+        }
+        return '0';
+    }
+    
+    string addBinary(string a, string b) {
+        string result = "";
+        int carry = 0;
+        int i = a.length()-1, j = b.length()-1;
+        while(i>=0 && j>=0){
+            result = addTwoBinaryNumbers(a[i], b[j], carry) + result;
+            i--;
+            j--;
+        }
+        while(i>=0){
+            result = addTwoBinaryNumbers(a[i], '0', carry) + result;
+            i--;
+        }
+        while(j>=0){
+            result = addTwoBinaryNumbers(b[j], '0', carry) + result;
+            j--;
+        }
+        if(carry){
+            carry = 0;
+            result = '1' + result;
+        }
+        return result;
+    }
+
+
+## 69. Sqrt(X)
+Like a mathematical induction method to increment and try.
+
+int mySqrt(int x) {
+        long i=0;
+        while(1){
+            if(i*i<x){
+                i++;
+            }else if(i*i==x){
+                return i;
+            }else if(i*i>x){
+                return i-1;
+            }
+        }
+    }
+
+
+## 70. Climbing Stairs
+iterative approach.
+
+int climbStairs(int n) {
+        if(n>1){
+            return climbStairs(n-1)+climbStairs(n-2);
+        }
+        else if(n==1){
+            return climbStairs(n-1);
+        }
+        else if(n==0){
+            return 1;
+        }
+        else if(n<0){
+            return 0;
+        }
+        
+        return 0;
+    }
+
 
 
 # TEMPLATE
