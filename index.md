@@ -521,8 +521,45 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
     }
  
  
+ ## 111. Minimum Depth of Binary Tree
+ Need to focus the node without nullptr left.
+ int minDepth(TreeNode* root) {
+        if(root==nullptr)
+            return 0;
+        else if(root->left==nullptr)
+            return 1+minDepth(root->right);
+        else if(root->right==nullptr)
+            return 1+minDepth(root->left);
+        else
+            return 1+min(minDepth(root->left),minDepth(root->right));
+    }
+ 
+ ## 112. Path Sum
+ Iterative approach. 
+ bool hasPathSum(TreeNode* root, int targetSum) {
+        if(root==nullptr)
+            return targetSum==0;       
+return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targetSum-root->val);
  
  
+ ## 118. Pascal's Triangle
+ Note the equation result[i][j]=result[i-1][j]+result[i-1][j+1].
+ vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> result;
+        result.push_back(vector<int>(1,1));
+        for(int i=1;i<numRows;i++){
+            vector<int> row;
+            row.push_back(1);
+            for(int j=0;j<i-1;j++){
+                row.push_back(result[i-1][j]+result[i-1][j+1]);
+            }
+            row.push_back(1);
+            result.push_back(row);
+        }
+        return result;
+    }
+ 
+ ## 
 
 
 # TEMPLATE
