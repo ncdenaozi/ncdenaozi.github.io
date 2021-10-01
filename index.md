@@ -1,6 +1,9 @@
 # Leetcode notes
 Reach me with ncdenaozi@outlook.com
 
+Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
+
+
 ## 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
 **really bad idea not to use a stack instead of a vector :<**
@@ -452,7 +455,74 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
             return isSameTree(p->right,q->right) and isSameTree(p->left,q->left);
     }
  
+ 
+ ## 101. Symmetric Tree
+ Iterative style, note that the condition should be in && relationship.
+ bool check(TreeNode* &a,TreeNode* &b){
+        if (a==nullptr || b==nullptr)
+            return a==b;
+        
+        return a->val==b->val && check(a->left,b->right) && check(a->right,b->left);
+    }
+        
+    bool isSymmetric(TreeNode* root) {
+        if(root==nullptr)
+            return true;
+        return check(root->left,root->right);
+    }
 
+ ## 104. Maximum Depth of Binary Tree
+ It is very silly that leetcode will refuse a ternary operation but only accept MAX() macro.
+ 
+ int maxDepth(TreeNode* root) {
+        if(root==nullptr)
+            return 0;
+        else{
+            return max(maxDepth(root->left),maxDepth(root->right))+1;
+        }
+    }
+ 
+ ## 108. Covert Sorted Array to Binary Tree
+ Recursive Method, use left and right to control the recursive size.
+ TreeNode* CreateTree(int l, int r, vector<int> &nums){
+        if(l>r)
+            return nullptr;
+        
+        int mid=(l+r)/2;
+        TreeNode* node=new TreeNode(nums[mid]);
+        node->left=CreateTree(l,mid-1, nums);
+        node->right=CreateTree(mid+1,r, nums);
+        return node;
+    }
+    
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        if(nums.size()==0)
+            return nullptr;
+        return CreateTree(0,nums.size()-1,nums);
+    }
+ 
+ 
+ ## 110. Balanced Binary Tree
+ a very clever/lazy approach, slow but effective. Note that !flag statement is used to improve performance.
+ bool flag=true;
+    int maxDepth(TreeNode* root) {
+        if(root==nullptr || !flag)
+            return 0;
+        else{
+            if(abs(maxDepth(root->left)-maxDepth(root->right))>1)
+                flag=false;
+            
+            return max(maxDepth(root->left),maxDepth(root->right))+1;
+        }
+    }
+    bool isBalanced(TreeNode* root) {
+        maxDepth(root);
+        return flag;
+    }
+ 
+ 
+ 
+ 
 
 
 # TEMPLATE
