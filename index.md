@@ -220,7 +220,50 @@ int searchInsert(vector<int>& nums, int target) {
         }
         return start; // only difference between the downside one instead of -1
     }
+ 
+ ## 45. Jump Games II
+ Dynamic programing, answer vector only updates when this index has not been updated before.
+ int jump(vector<int>& nums) {
+        if (nums.size()==1)
+            return 0;
+        vector<int> ans(nums.size());
+        for(int i=0;i<nums.size();i++){
+            int j=nums[i];
+            for(int x=1;x<=j;x++){
+                if(ans[i+x]==0)
+                    ans[i+x]=ans[i]+1;
+                
+                if(i+x==nums.size()-1)
+                    return ans[i+x];
+            }  
+        }
+        return 0;
+    }
 
+ ##55. Jump Game
+ Find all zero point in the whole vector, for each zero, browse beforehead if nums[j]>(i-j) then bypass this zero, else we find if this zero position is the head position of the total array. If it is head position then return true, else return false.
+ bool canJump(vector<int>& nums) {
+        if(nums[0]==0 and nums.size()!=1)
+            return false;
+        
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]==0){
+                for(int j=i-1;j>=0;j--){
+                    if(nums[j]>(i-j))
+                        break;
+                    else if(j==0){
+                        if(i==nums.size()-1)
+                            return true;
+                        else
+                            return false;
+                    } 
+                }
+            }
+        }
+        return true;
+    }
+ 
+ 
 
 ## 704. Binary search
 Almost same as simple binary search, the time complexity is O(logn) for already sorted array.
