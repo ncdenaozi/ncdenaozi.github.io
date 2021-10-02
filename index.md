@@ -602,8 +602,38 @@ return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targ
         return result;
     }
  
- ## 
+ ## 119. Pascal's Triangle II
+ Same as 118                                  
+vector<int> getRow(int rowIndex) {
+        vector<vector<int>> result;
+        result.push_back(vector<int>(1,1));
+        
+        for(int i=1;i<=rowIndex;i++){
+            vector<int> row;
+            row.push_back(1);
+            for(int j=0;j<i-1;j++){
+                row.push_back(result[i-1][j]+result[i-1][j+1]);
+            }
+            row.push_back(1);
+            result.push_back(row);
+        }
+        return result[rowIndex];
+    }
 
+## 121. Best Time to Buy and Sell Stock
+O(n) Approach, find min point and after minpoint just compare the min_profit.
+int maxProfit(vector<int>& prices) {
+        int min_point=INT_MAX;
+        int profit=0;
+        for(int i=0;i<prices.size();i++){
+            if(prices[i]<min_point){
+                min_point=prices[i];
+            }else{
+                profit=max(profit,prices[i]-min_point);
+            }
+        }
+        return profit;
+    }
 
 # TEMPLATE
 
