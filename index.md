@@ -635,6 +635,33 @@ int maxProfit(vector<int>& prices) {
         return profit;
     }
 
+ 
+## 125. Valid Palindrome
+Note that start==end||start==end+1 deals with both odd and even number cases.
+bool isPalindrome(string s) {
+        string s_2;
+        for(auto i:s){
+            if(i>='a' and i<='z')
+                s_2+=i;
+            else if(i>='A' and i<='Z')
+                s_2+=i-('A'-'a');
+            else if(i>='0' and i<='9')
+                s_2+=i;
+        }
+        if(s_2.size()<=1)
+            return true;
+        int start=0;
+        int end=s_2.size()-1;
+        while(start<end){
+            if(s_2[start]==s_2[end]){
+                start++;
+                end--;
+            }else
+                break;
+        }        
+        return start==end||start==end+1;
+    }             
+             
 # TEMPLATE
 
 Syntax highlighted code block
