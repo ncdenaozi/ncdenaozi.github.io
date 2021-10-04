@@ -538,11 +538,11 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
         return node;
     }
     
-    TreeNode* sortedArrayToBST(vector<int>& nums) {
+TreeNode* sortedArrayToBST(vector<int>& nums) {
         if(nums.size()==0)
             return nullptr;
         return CreateTree(0,nums.size()-1,nums);
-    }
+}
  
  
  ## 110. Balanced Binary Tree
@@ -558,7 +558,7 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
             return max(maxDepth(root->left),maxDepth(root->right))+1;
         }
     }
-    bool isBalanced(TreeNode* root) {
+bool isBalanced(TreeNode* root) {
         maxDepth(root);
         return flag;
     }
@@ -691,6 +691,41 @@ bool hasCycle(ListNode *head) {
         }
         return false;
     }
+
+## 144. Binary Tree Preorder Traversal
+Tree preorder traversal, very simple iterative mode
+void Traversal(TreeNode* root, vector<int> &result){
+        if(root){
+            result.push_back(root->val);
+            Traversal(root->left,result);
+            Traversal(root->right,result);
+        }
+    }
+    
+vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        Traversal(root,result);
+        return result;
+    }
+             
+## 145. Binary Tree Postorder Traversal
+Same as above             
+void Traversal(TreeNode* root, vector<int> &result){
+        if(root){
+            Traversal(root->left,result);
+            Traversal(root->right,result);
+            result.push_back(root->val);
+        }
+    }
+    
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
+        Traversal(root,result);
+        return result;
+    }             
+
+             
+             
              
 # TEMPLATE
 
