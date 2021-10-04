@@ -660,7 +660,37 @@ bool isPalindrome(string s) {
                 break;
         }        
         return start==end||start==end+1;
-    }             
+    }
+
+## 136. Single Number
+bitwise operation xor is used to identify the only number left.
+int singleNumber(vector<int>& nums) {
+        int result=0;
+        for(auto i:nums){
+            result^=i;
+        }
+        return result;
+    }
+       
+## 141. Linked List Cycle
+Use a sily approach to save the pointer address
+Standard solution: A fast route with *2 speed and A slow route with normal speed, if it is a cycled list then these two route will meet again.
+bool hasCycle(ListNode *head) {
+        vector<ListNode*> ptr_vec;
+        while(head){
+            bool Contained=false;
+            for(auto i:ptr_vec){
+                if(i==head)
+                    Contained=true;
+            }
+            if(Contained)
+                return true;
+            else
+                ptr_vec.push_back(head);
+            head=head->next;
+        }
+        return false;
+    }
              
 # TEMPLATE
 
