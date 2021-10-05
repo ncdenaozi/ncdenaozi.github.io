@@ -157,6 +157,35 @@ bool isValid(string s) {
             return false;
 }
 
+## 21. Merge Two Sorted Lists
+Merge sort approach, each time only look at two node.                                     
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode* result=new ListNode(0);
+        ListNode* head=result;
+        
+        while(l1 or l2){
+            if(l1 and l2){
+                if(l1->val<l2->val){
+                    head->next=l1;
+                    l1=l1->next;
+                }else{
+                    head->next=l2;
+                    l2=l2->next;
+                }
+            }else if(l1){
+                head->next=l1;
+                l1=l1->next;
+            }else if(l2){
+                head->next=l2;
+                l2=l2->next;
+            }
+            head=head->next;
+        }
+        
+        result=result->next;
+        return result;
+    }                                     
+
 ## 26. Remove Duplicates from Sorted Array
 Use std::vector.erase(vector.begin()+i) to delete one element from the space. Note that after delete operation, the position and the size both reduce itself so i-- is needed.
 Speed is quite slow, standard solution is in JAVA.
@@ -691,6 +720,34 @@ bool hasCycle(ListNode *head) {
         }
         return false;
     }
+             
+## 142. Linked List Cycle II
+fast slow pointer approach.
+ListNode *detectCycle(ListNode *head) {
+        if(head==nullptr)
+            return nullptr;
+        
+        ListNode* fast=head;
+        ListNode* slow=head;
+        int count=0;
+        while(fast->next!=nullptr){
+            fast=fast->next->next;
+            slow=slow->next;
+            count++;
+            if(fast==nullptr)
+                return nullptr;
+            
+            if(fast==slow){
+                fast=head;
+                while(fast!=slow){
+                    fast=fast->next;
+                    slow=slow->next;
+                }
+                return fast;
+            }    
+        }
+        return nullptr;
+    }             
 
 ## 144. Binary Tree Preorder Traversal
 Tree preorder traversal, very simple iterative mode
