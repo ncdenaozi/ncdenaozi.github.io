@@ -782,7 +782,8 @@ void Traversal(TreeNode* root, vector<int> &result){
     }             
 
 ## 160. Intersection of Two Linked Lists
-ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+A slow approach in O(n^2)             
+`ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* result;
         ListNode* temp=headB;
         while(headA){
@@ -799,7 +800,7 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
             }
         }
         return result;
-    }
+    }`
              
              
 # TEMPLATE
