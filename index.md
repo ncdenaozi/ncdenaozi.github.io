@@ -781,7 +781,25 @@ void Traversal(TreeNode* root, vector<int> &result){
         return result;
     }             
 
-             
+## 160. Intersection of Two Linked Lists
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* result;
+        ListNode* temp=headB;
+        while(headA){
+            if(headA==temp){
+                result=headA;
+                break;
+            } 
+            else{
+                temp=temp->next;
+            }
+            if(temp==nullptr){
+                headA=headA->next;
+                temp=headB;
+            }
+        }
+        return result;
+    }
              
              
 # TEMPLATE
