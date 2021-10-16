@@ -802,6 +802,39 @@ A slow approach in O(n^2)
         return result;
     }`
              
+## 168. Excel Sheet Column Title             
+string convertToTitle(int columnNumber) {
+        string res="";
+        int v;
+        while(columnNumber>0){
+            v=columnNumber%26;
+            if(v==0){
+             v=26;  
+            }
+            res=(char)(v+64)+res; 
+            columnNumber-=v;
+            columnNumber/=26;
+        }
+        return res;
+    }             
+
+## Majorith Elements
+The trick here is count-- when it is not the number, also never let the count become a negative number.             
+int majorityElement(vector<int>& nums) {
+        int current=-1;
+        int count=0;
+        for(auto i:nums){
+            if(count==0)
+                current=i;
+            if(current==i)
+                count++;
+            else
+                count--;
+        }
+        
+        return current;
+    } 
+             
              
 # TEMPLATE
 
