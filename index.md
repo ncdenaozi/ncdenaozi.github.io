@@ -833,7 +833,31 @@ int majorityElement(vector<int>& nums) {
         }
         
         return current;
-    } 
+    }
+
+## 344. Reverse String
+two pointer way             
+void reverseString(vector<char>& s) {
+        int start=0;
+        int end=s.size()-1;
+        while(start<=end){
+            char temp=s[end];
+            s[end]=s[start];
+            s[start]=temp;
+            start++;
+            end--;
+        }
+    }
+Onion ways recursion, faster than a single loop
+void ans(vector<char>& s, int left, int right){
+        if(left < right){
+            swap(s[left],s[right]);
+            ans(s,left+1,right-1);
+        }
+}
+void reverseString(vector<char>& s) {
+        ans(s,0,s.size()-1);
+}             
              
              
 # TEMPLATE
