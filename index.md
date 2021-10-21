@@ -880,7 +880,81 @@ void ans(vector<char>& s, int left, int right){
 void reverseString(vector<char>& s) {
         ans(s,0,s.size()-1);
 }             
-```             
+```
+
+## 289. Game of Life
+not in place and not padding method but at least guarantee in time.         
+```
+int single_cell_case(vector<vector<int>>& board,int x, int y){ //use for single cell statistic, return the value of its total neighbors
+        int rol=board.size()-1;
+        int column=board[0].size()-1;
+        if(x==0){
+            if(y==0){
+                return board[x][y+1]+board[x+1][y]+board[x+1][y+1];
+            }else if(y==column){
+                return board[x][y-1]+board[x+1][y]+board[x+1][y-1];
+            }else{
+                return board[x][y+1]+board[x][y-1]+board[x+1][y-1]+board[x+1][y]+board[x+1][y+1];
+            }
+        }else if(x==rol){
+            if(y==0){
+                return board[x-1][y]+board[x-1][y+1]+board[x][y+1];
+            }else if(y==column){
+                return board[x][y-1]+board[x-1][y-1]+board[x-1][y];
+            }else{
+                return board[x][y-1]+board[x-1][y-1]+board[x-1][y]+board[x-1][y+1]+board[x][y+1];
+            }
+        }else{
+            if(y==0){
+                return board[x-1][y]+board[x+1][y]+board[x-1][y+1]+board[x][y+1]+board[x+1][y+1];
+            }else if(y==column){
+                return board[x-1][y]+board[x+1][y]+board[x-1][y-1]+board[x][y-1]+board[x+1][y-1];
+            }else{
+                return board[x-1][y-1]+board[x-1][y]+board[x-1][y+1]+board[x+1][y]+board[x][y+1]+board[x+1][y+1]+board[x][y-1]+board[x+1][y-1];
+            }
+        }
+    }
+    
+    void gameOfLife(vector<vector<int>>& board) {
+        int rol=board.size()-1;
+        int column=board[0].size()-1;
+        
+        if(rol==0 and column==0){ //special case
+            if(board[0][0]==1)
+                board[0][0]=0;
+        }
+        else if(rol==0){
+            for(int y=0;y<=column;y++){ //special case
+                board[0][y]=0;
+            }
+        }else if(column==0){
+            for(int x=0;x<=rol;x++){ //special case
+                board[x][0]=0;
+            }
+        }    
+        else{
+            vector<vector<int>> result;
+            for(int x=0;x<=rol;x++){
+                vector<int> new_line;
+                    for(int y=0;y<=column;y++){
+                        int scan=single_cell_case(board,x,y);
+                        if(board[x][y]==1 and scan<2)
+                            new_line.push_back(0);  
+                        else if(board[x][y]==1 and (scan==2 or scan==3))
+                            new_line.push_back(1);
+                        else if(board[x][y]==1 and scan>3)
+                            new_line.push_back(0);
+                        else if(board[x][y]==0 and scan==3)
+                            new_line.push_back(1);
+                        else
+                            new_line.push_back(0);
+                    }
+                result.push_back(new_line);
+            }
+            board=result;
+        }    
+    }
+```
              
 # TEMPLATE
 
