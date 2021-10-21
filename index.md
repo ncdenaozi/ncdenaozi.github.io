@@ -955,6 +955,28 @@ int single_cell_case(vector<vector<int>>& board,int x, int y){ //use for single 
         }    
     }
 ```
+Maximum solution, it is amazing
+```
+void gameOfLife(vector<vector<int>>& board) {
+        int x[4] = {1, -1, 0, 1}, y[4] = {0, 1, 1, 1};
+        for (int i=0; i<board.size(); i++) {
+            for (int j=0; j<board[0].size(); j++) {
+                int sum = board[i][j];
+                for (int k=0; k<4; k++) if (i+y[k]<board.size() && j+x[k]<board[0].size() && j+x[k]>=0) {
+                        sum += 10 * (board[i+y[k]][j+x[k]]%10);
+                        board[i+y[k]][j+x[k]] += 10*(board[i][j]%10);
+                }
+                if (sum==30 || sum==21 || sum == 31) board[i][j] = 1;
+                else board[i][j] = 0;
+            }
+        }
+    }
+```
+## 1361. Validate Binary Tree Nodes
+
+```
+
+```
              
 # TEMPLATE
 
