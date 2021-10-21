@@ -7,8 +7,7 @@ Someone tells me that write these notes down will somehow give you effort to com
 ## 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
 **really bad idea not to use a stack instead of a vector :<**
-
-
+```
  int reverse(int x) {
         
         vector<int> digit;
@@ -31,12 +30,12 @@ use brutal force to solve this method, note that there already exists a macro ca
         else
             return result;
     }
-    
+```    
     
 ## 9. Palindrome Number
 use simple vector not stack. I thought vector may be easier to control with head&tail pointer because it is quite difficult to remember the number poped out of stack, probably need another memory list?
 Speed is quite slow, optimal solution is that we only need to reverse half of the number, kind of tricky one.
-
+```
 bool isPalindrome(int x) {
         if(x<0)
             return false;
@@ -62,11 +61,11 @@ bool isPalindrome(int x) {
         }
         return true;
         }
-    
+```    
 ## 13. Roman to Integer
 A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small but things like IV is actually small to large, so have a memory to locate the last ROMAN digit.
 **Pity that leetcode need premium to unlock the standard solution.**
-
+```
 int romanToInt(string s) {
         unordered_map<char,int> mp={pair('I',1),pair('V',5),pair('X',10),pair('L',50),pair('C',100),pair('D',500),pair('M',1000)};
         int result=0;
@@ -81,11 +80,11 @@ int romanToInt(string s) {
         return result; 
     }
 }; 
-
+```
 ## 14. Longest Common Prefix
 Brute force with a decoder-like program, just runs the whole comparison char by char.
 standard solution is using **divide and conquer**, I like the idea but the implementation could be fussy.
-
+```
 string longestCommonPrefix(vector<string>& strs) {
         if(strs.size()==1)
             return strs[0];
@@ -104,13 +103,10 @@ string longestCommonPrefix(vector<string>& strs) {
         return result;
     }
 }; 
-    
-  
-
-
+```   
 ## 20. Valid Parentheses
 I fail for the first time because I am thinking how can I deal with the right side parenthese in the stack. But then I found out that only left-side parentheses should be pushed into the stack and the right-side is only used as a comparison.
-                                     
+```                                     
 bool isValid(string s) {
        if(s.size()%2==1)
             return false;
@@ -156,9 +152,10 @@ bool isValid(string s) {
         else
             return false;
 }
-
+```
 ## 21. Merge Two Sorted Lists
 Merge sort approach, each time only look at two node.                                     
+```
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         ListNode* result=new ListNode(0);
         ListNode* head=result;
@@ -185,12 +182,12 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         result=result->next;
         return result;
     }                                     
-
+```
 ## 26. Remove Duplicates from Sorted Array
 Use std::vector.erase(vector.begin()+i) to delete one element from the space. Note that after delete operation, the position and the size both reduce itself so i-- is needed.
 Speed is quite slow, standard solution is in JAVA.
-
-    int removeDuplicates(vector<int>& nums) {
+```
+int removeDuplicates(vector<int>& nums) {
         for(int i=1;i<nums.size();i++){
             if(nums[i]<=nums[i-1]){
                 nums.erase(nums.begin()+i);
@@ -199,10 +196,10 @@ Speed is quite slow, standard solution is in JAVA.
         }
         return nums.size();
     }
-
+```
 ## 27. Remove Element
 Almost same as problem 26.
-
+```
      int removeElement(vector<int>& nums, int val) {
         for(int i=0;i<nums.size();i++){
             if(nums[i]==val){
@@ -212,11 +209,11 @@ Almost same as problem 26.
         }
         return nums.size();
     }
-
+```
 
 ## 28. implement strStr()
 Use std::string.compare(int position, int length, string substring) and traverse the haystack, there is a lot of corner case so add a few conditions.
-     
+```     
 int strStr(string haystack, string needle) {
         if(needle.size()==0)
             return 0;
@@ -230,11 +227,11 @@ int strStr(string haystack, string needle) {
         }
         return -1;
     }
-
+```
 
 ## 35. Search Insert Position
 A simple binary search and output the lower bound for not-found result;
-     
+```     
 int searchInsert(vector<int>& nums, int target) {
         int start=0;
         int end=nums.size()-1;
@@ -249,9 +246,10 @@ int searchInsert(vector<int>& nums, int target) {
         }
         return start; // only difference between the downside one instead of -1
     }
- 
+``` 
  ## 45. Jump Games II
  Dynamic programing, answer vector only updates when this index has not been updated before.
+ ```
  int jump(vector<int>& nums) {
         if (nums.size()==1)
             return 0;
@@ -268,9 +266,10 @@ int searchInsert(vector<int>& nums, int target) {
         }
         return 0;
     }
-
+```
  ##55. Jump Game
  Find all zero point in the whole vector, for each zero, browse beforehead if nums[j]>(i-j) then bypass this zero, else we find if this zero position is the head position of the total array. If it is head position then return true, else return false.
+ ```
  bool canJump(vector<int>& nums) {
         if(nums[0]==0 and nums.size()!=1)
             return false;
@@ -291,12 +290,11 @@ int searchInsert(vector<int>& nums, int target) {
         }
         return true;
     }
+``` 
  
- 
-
 ## 704. Binary search
 Almost same as simple binary search, the time complexity is O(logn) for already sorted array.
-
+```
 int search(vector<int>& nums, int target) {
         int left=0;
         int pivot=0;
@@ -309,10 +307,11 @@ int search(vector<int>& nums, int target) {
         }
         return -1;
     }
+```
 
 ## 58. Length of Last Word
 use two pointer to identify the space, right pointer is the rightmost first non-space char and left pointer is the rightmost near-right sapce char.
-
+```
      int lengthOfLastWord(string s) {
         int right=s.size()-1;
         while(s[right]==' '){
@@ -328,11 +327,11 @@ use two pointer to identify the space, right pointer is the rightmost first non-
         
         return right-left;
     }
-
+```
 
 ## 66. Plus one
 An idea of carryout, note that the last carryout means you need extra 1 added to the front of vector which is the first digits.
-
+```
      vector<int> plusOne(vector<int>& digits) {
         int carryout=0;
         digits[digits.size()-1]++;
@@ -351,11 +350,11 @@ An idea of carryout, note that the last carryout means you need extra 1 added to
         }
         return digits;
     }
-
+```
 
 ## 67. Add binary
 define a single digit function to add one digit together.
-
+```
 char addTwoBinaryNumbers(char a, char b, int& carry){
         if(a == '0' && b == '0')
         {
@@ -406,11 +405,11 @@ char addTwoBinaryNumbers(char a, char b, int& carry){
         }
         return result;
     }
-
+```
 
 ## 69. Sqrt(X)
 Like a mathematical induction method to increment and try.
-
+```
 int mySqrt(int x) {
         long i=0;
         while(1){
@@ -423,11 +422,11 @@ int mySqrt(int x) {
             }
         }
     }
-
+```
 
 ## 70. Climbing Stairs
 iterative approach.
-
+```
 int climbStairs(int n) {
         if(n>1){
             return climbStairs(n-1)+climbStairs(n-2);
@@ -444,10 +443,10 @@ int climbStairs(int n) {
         
         return 0;
     }
-                     
+```                     
 ## 83. Remove Duplicates from Sorted List
 Use a memory to store the last smaller node since the list is non-decreasing order. Special case is that the end of list but there is a equal between memory and temp you need to free memory->next.
-                      
+```                      
 ListNode* deleteDuplicates(ListNode* head) {
         if(head==nullptr)
             return head;
@@ -470,10 +469,10 @@ ListNode* deleteDuplicates(ListNode* head) {
         }
         return head;
     }                      
-
+```
 ## 88. Merge Sorted Array
 Use a easy approach to push the original array behind the inserted position.
- 
+``` 
  void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         for(int x:nums2){
             int i=0;
@@ -494,10 +493,10 @@ Use a easy approach to push the original array behind the inserted position.
             m++;
         }
     }
- 
+ ```
 ## 94. Binary Tree Inorder Traversal
 Use reference to pass the vector parameter.
- 
+``` 
  void Traverse(TreeNode* &root, vector<int> &result){
         if(root->left)
             Traverse(root->left,result);
@@ -513,9 +512,10 @@ Use reference to pass the vector parameter.
         Traverse(root,result);
         return result;
     }
- 
+``` 
 ## 100. Same Tree
  Tricky method I think, there is a lot of corner case.
+ ```
 bool isSameTree(TreeNode* p, TreeNode* q) {
         if(p==nullptr and q==nullptr)
             return true;
@@ -526,10 +526,11 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
         else
             return isSameTree(p->right,q->right) and isSameTree(p->left,q->left);
     }
- 
+``` 
  
  ## 101. Symmetric Tree
  Iterative style, note that the condition should be in && relationship.
+ ```
  bool check(TreeNode* &a,TreeNode* &b){
         if (a==nullptr || b==nullptr)
             return a==b;
@@ -542,10 +543,10 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
             return true;
         return check(root->left,root->right);
     }
-
+```
  ## 104. Maximum Depth of Binary Tree
  It is very silly that leetcode will refuse a ternary operation but only accept MAX() macro.
- 
+``` 
  int maxDepth(TreeNode* root) {
         if(root==nullptr)
             return 0;
@@ -553,9 +554,10 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
             return max(maxDepth(root->left),maxDepth(root->right))+1;
         }
     }
- 
+``` 
  ## 108. Covert Sorted Array to Binary Tree
  Recursive Method, use left and right to control the recursive size.
+``` 
  TreeNode* CreateTree(int l, int r, vector<int> &nums){
         if(l>r)
             return nullptr;
@@ -572,10 +574,11 @@ TreeNode* sortedArrayToBST(vector<int>& nums) {
             return nullptr;
         return CreateTree(0,nums.size()-1,nums);
 }
- 
+``` 
  
  ## 110. Balanced Binary Tree
  a very clever/lazy approach, slow but effective. Note that !flag statement is used to improve performance.
+``` 
  bool flag=true;
     int maxDepth(TreeNode* root) {
         if(root==nullptr || !flag)
@@ -591,10 +594,11 @@ bool isBalanced(TreeNode* root) {
         maxDepth(root);
         return flag;
     }
- 
+``` 
  
  ## 111. Minimum Depth of Binary Tree
  Need to focus the node without nullptr left.
+``` 
  int minDepth(TreeNode* root) {
         if(root==nullptr)
             return 0;
@@ -605,17 +609,19 @@ bool isBalanced(TreeNode* root) {
         else
             return 1+min(minDepth(root->left),minDepth(root->right));
     }
- 
+``` 
  ## 112. Path Sum
  Iterative approach. 
+``` 
  bool hasPathSum(TreeNode* root, int targetSum) {
         if(root==nullptr)
             return targetSum==0;       
 return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targetSum-root->val);
- 
+``` 
  
  ## 118. Pascal's Triangle
  Note the equation result[i][j]=result[i-1][j]+result[i-1][j+1].
+``` 
  vector<vector<int>> generate(int numRows) {
         vector<vector<int>> result;
         result.push_back(vector<int>(1,1));
@@ -630,9 +636,10 @@ return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targ
         }
         return result;
     }
- 
+ ```
  ## 119. Pascal's Triangle II
  Same as 118                                  
+```
 vector<int> getRow(int rowIndex) {
         vector<vector<int>> result;
         result.push_back(vector<int>(1,1));
@@ -648,9 +655,10 @@ vector<int> getRow(int rowIndex) {
         }
         return result[rowIndex];
     }
-
+```
 ## 121. Best Time to Buy and Sell Stock
 O(n) Approach, find min point and after minpoint just compare the min_profit.
+```
 int maxProfit(vector<int>& prices) {
         int min_point=INT_MAX;
         int profit=0;
@@ -663,10 +671,11 @@ int maxProfit(vector<int>& prices) {
         }
         return profit;
     }
-
+```
  
 ## 125. Valid Palindrome
 Note that start==end||start==end+1 deals with both odd and even number cases.
+```
 bool isPalindrome(string s) {
         string s_2;
         for(auto i:s){
@@ -690,9 +699,11 @@ bool isPalindrome(string s) {
         }        
         return start==end||start==end+1;
     }
+```
 
 ## 136. Single Number
 bitwise operation xor is used to identify the only number left.
+```
 int singleNumber(vector<int>& nums) {
         int result=0;
         for(auto i:nums){
@@ -700,10 +711,11 @@ int singleNumber(vector<int>& nums) {
         }
         return result;
     }
-       
+```       
 ## 141. Linked List Cycle
 Use a sily approach to save the pointer address
 Standard solution: A fast route with *2 speed and A slow route with normal speed, if it is a cycled list then these two route will meet again.
+```
 bool hasCycle(ListNode *head) {
         vector<ListNode*> ptr_vec;
         while(head){
@@ -720,9 +732,10 @@ bool hasCycle(ListNode *head) {
         }
         return false;
     }
-             
+```             
 ## 142. Linked List Cycle II
 fast slow pointer approach.
+```
 ListNode *detectCycle(ListNode *head) {
         if(head==nullptr)
             return nullptr;
@@ -748,9 +761,10 @@ ListNode *detectCycle(ListNode *head) {
         }
         return nullptr;
     }             
-
+```
 ## 144. Binary Tree Preorder Traversal
 Tree preorder traversal, very simple iterative mode
+```
 void Traversal(TreeNode* root, vector<int> &result){
         if(root){
             result.push_back(root->val);
@@ -764,9 +778,10 @@ vector<int> preorderTraversal(TreeNode* root) {
         Traversal(root,result);
         return result;
     }
-             
+```             
 ## 145. Binary Tree Postorder Traversal
 Same as above             
+```
 void Traversal(TreeNode* root, vector<int> &result){
         if(root){
             Traversal(root->left,result);
@@ -780,10 +795,11 @@ void Traversal(TreeNode* root, vector<int> &result){
         Traversal(root,result);
         return result;
     }             
-
+```
 ## 160. Intersection of Two Linked Lists
 A slow approach in O(n^2)             
-`ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+```
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* result;
         ListNode* temp=headB;
         while(headA){
@@ -800,9 +816,10 @@ A slow approach in O(n^2)
             }
         }
         return result;
-    }`
-             
+    }
+```             
 ## 168. Excel Sheet Column Title             
+```
 string convertToTitle(int columnNumber) {
         string res="";
         int v;
@@ -817,9 +834,11 @@ string convertToTitle(int columnNumber) {
         }
         return res;
     }             
+```
 
 ## Majorith Elements
 The trick here is count-- when it is not the number, also never let the count become a negative number.             
+```
 int majorityElement(vector<int>& nums) {
         int current=-1;
         int count=0;
@@ -834,9 +853,10 @@ int majorityElement(vector<int>& nums) {
         
         return current;
     }
-
+```
 ## 344. Reverse String
 two pointer way             
+```
 void reverseString(vector<char>& s) {
         int start=0;
         int end=s.size()-1;
@@ -848,7 +868,9 @@ void reverseString(vector<char>& s) {
             end--;
         }
     }
+```
 Onion ways recursion, faster than a single loop
+```
 void ans(vector<char>& s, int left, int right){
         if(left < right){
             swap(s[left],s[right]);
@@ -858,12 +880,14 @@ void ans(vector<char>& s, int left, int right){
 void reverseString(vector<char>& s) {
         ans(s,0,s.size()-1);
 }             
-             
+```             
              
 # TEMPLATE
 
 Syntax highlighted code block
-
+```
+code
+```
 # Header 1
 ## Header 2
 ### Header 3
