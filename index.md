@@ -972,11 +972,72 @@ void gameOfLife(vector<vector<int>>& board) {
         }
     }
 ```
-## 1361. Validate Binary Tree Nodes
 
+## 495. Teemo Attacking
+A memory to record the last hit for counting.
+```
+int findPoisonedDuration(vector<int>& timeSeries, int duration) {
+        int sum=duration;
+        
+        if(timeSeries.size()==1)
+            return sum;
+        
+        int memory=timeSeries[0];
+        for(int i=1;i<timeSeries.size();i++){
+            if((memory+duration)>timeSeries[i]){
+                sum+=timeSeries[i]-timeSeries[i-1];
+                memory=timeSeries[i];
+            }else{
+                sum+=duration;
+                memory=timeSeries[i];
+            }
+        }
+        
+        return sum;
+    }
 ```
 
+## 217. Contains Duplicate
+a brute force sliding window solution, optimum solution is using a std::set to figure whether set and vector size is equal.
 ```
+bool containsDuplicate(vector<int>& nums) {
+        if(nums.size()==1)
+            return false;
+        int head=0;       
+        while(head<nums.size()){
+            for(int j=head+1;j<nums.size();j++){
+                if(nums[head]==nums[j])
+                    return true;
+            }
+            
+            head++;
+        } 
+        return false;
+    }
+```
+
+## 219. Contains Duplicate II
+almost same sliding windows as above, optimum solution is hashmap.
+```
+bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        if(nums.size()==1)
+            return false;
+        int head=0;
+                        
+        while(head<nums.size()){
+            for(int j=head+1;j<nums.size();j++){
+                if((j-head)<=k){
+                    if(nums[head]==nums[j])
+                        return true;
+                }else
+                    break;
+            }
+            
+            head++;
+        } 
+        return false;
+    }
+```    
              
 # TEMPLATE
 
