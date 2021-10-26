@@ -1037,8 +1037,41 @@ bool containsNearbyDuplicate(vector<int>& nums, int k) {
         } 
         return false;
     }
-```    
-             
+```
+
+## 98. Validate Binary Search Tree
+using a min and max pointer to illustrate subtree call
+```
+bool ans(TreeNode* root, TreeNode* Low, TreeNode* High){
+        if(root==nullptr)
+            return true;
+        if((Low!=nullptr && root->val <= Low->val) || (High!=nullptr && root->val>=High->val))
+            return false;
+        return ans(root->left,Low,root) and ans(root->right,root,High);
+    }
+    
+bool isValidBST(TreeNode* root) {
+        return ans(root,nullptr,nullptr);
+    }
+```
+
+## 226. Invert Binary Tree
+recursion method
+```
+TreeNode* invertTree(TreeNode* root) {
+        if(root==nullptr)
+            return nullptr;
+        
+        invertTree(root->left);
+        invertTree(root->right);
+        
+        TreeNode* temp=root->left;
+        root->left=root->right;
+        root->right=temp;
+        
+        return root;
+    }
+```
 # TEMPLATE
 
 Syntax highlighted code block
