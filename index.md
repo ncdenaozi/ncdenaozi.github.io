@@ -1072,6 +1072,28 @@ TreeNode* invertTree(TreeNode* root) {
         return root;
     }
 ```
+
+## 1557. Minimum Number of Vertices to Reach All Nodes
+only need to exclude those point which has an ingress edge
+```
+vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
+        unordered_set<int> element; 
+        
+        for(auto i:edges){
+            element.insert(i[1]);
+        }
+        
+        vector<int> result;
+        for(int i=0;i<n;i++){
+            if(element.find(i)==element.end())
+                result.push_back(i);
+        }
+        
+        return result;
+    }
+```
+
+
 # TEMPLATE
 
 Syntax highlighted code block
