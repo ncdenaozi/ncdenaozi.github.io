@@ -1122,6 +1122,40 @@ public:
 };
 ```
 
+## 547. Number of Provinces
+Breath FS, queue+visited array+adjacunt array.
+```
+int findCircleNum(vector<vector<int>>& isConnected) {
+        int n=isConnected.size();
+        vector<int> visit(n,0);
+        vector<int> adj[n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+                if(isConnected[i][j]==1)
+                    adj[i].push_back(j);
+        int ans=0;
+        queue<int> q;
+        for(int x=0;x<n;x++){
+            if(visit[x]==0){
+                ans++;
+                q.push(x);
+                visit[x]=1;
+                while(!q.empty()){
+                    int node=q.front();
+                    q.pop();
+                    for(auto it:adj[node]){
+                        if(!visit[it]){
+                            visit[it]=1;
+                            q.push(it);
+                        }    
+                    }
+                }
+            }     
+        }
+        return ans;
+    }
+```
+
 
 # TEMPLATE
 
