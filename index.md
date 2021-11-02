@@ -1093,6 +1093,35 @@ vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
     }
 ```
 
+## 236. Lowest Common Ancestor of a Binary Tree
+recursive call to make sure check, left, right at least have 2 TRUE and that is lowest node.
+```
+class Solution {
+public:
+    TreeNode* Result;
+    TreeNode* p;
+    TreeNode* q;
+    bool recurse_tree(TreeNode* current){
+        if(current==nullptr)
+            return false;
+        
+        bool left_v=recurse_tree(current->left);
+        bool right_v=recurse_tree(current->right);
+        bool check= (current==p) or (current==q);
+        
+        if((int)check+(int)left_v+(int)right_v >=2)
+            Result=current;
+        return check or left_v or right_v;
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p1, TreeNode* q2) {
+        p=p1;
+        q=q2;
+        recurse_tree(root);
+        return Result;
+    }
+};
+```
+
 
 # TEMPLATE
 
