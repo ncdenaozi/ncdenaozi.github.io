@@ -1156,7 +1156,79 @@ int findCircleNum(vector<vector<int>>& isConnected) {
     }
 ```
 
-
+## 199. Binary Tree Right Side View
+```
+BFS and return the last node of one loop
+vector<int> rightSideView(TreeNode* root) {
+        vector<int> result;
+        queue<TreeNode*> q;
+        
+        if(root==nullptr)
+            return result;
+        
+        q.push(root);
+        while(!q.empty()){
+            int n=q.size();
+            for(int i=0;i<n;i++){
+                TreeNode* temp=q.front();
+                q.pop();
+                if(temp->left)
+                    q.push(temp->left);
+                if(temp->right)
+                    q.push(temp->right);
+                
+                if(i==n-1)
+                    result.push_back(temp->val);
+            }
+        }
+        return result;
+    }
+``` 
+ 
+## 200. Number of Islands
+A very decent way to cover area, traverse and if there is an area then replace 1 with 0 and cover its 4-direction neighbors.
+``` 
+void dfs(vector<vector<char>>& grid, int row, int column){
+        int row_limit=grid.size();
+        int column_limit=grid[0].size();
+        
+        grid[row][column]='0';
+        
+        //go up
+        if(row>=1 && grid[row-1][column]=='1')
+            dfs(grid,row-1,column);
+        //go down
+        if(row<(row_limit-1) && grid[row+1][column]=='1')
+            dfs(grid,row+1,column);
+        //go left
+        if(column>=1 && grid[row][column-1]=='1')
+            dfs(grid,row,column-1);
+        //go right
+        if(column<(column_limit-1) && grid[row][column+1]=='1')
+            dfs(grid,row,column+1);
+    }
+    
+    int numIslands(vector<vector<char>>& grid) {
+        int row=grid.size();
+        int column=grid[0].size();
+        
+        if(row==0)
+            return 0;
+        
+        int count=0;
+        
+        for(int i=0;i<row;i++){
+            for(int j=0;j<column;j++){
+                if(grid[i][j]=='1'){
+                    count++;
+                    dfs(grid,i,j);
+                }
+            }
+        }
+        
+        return count;
+    }
+``` 
 # TEMPLATE
 
 Syntax highlighted code block
