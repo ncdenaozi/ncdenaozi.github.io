@@ -1229,6 +1229,29 @@ void dfs(vector<vector<char>>& grid, int row, int column){
         return count;
     }
 ``` 
+
+## 392. Is Subsequence
+use Two pointer method to scan the whole string
+```
+bool isSubsequence(string s, string t) {
+        if(s.size()>t.size())
+            return false;
+        int j=0;
+        for(int i=0;i<s.size();i++){
+            while(s[i]!=t[j] and j<t.size()){
+                j++;
+            }
+            if(s[i]==t[j])
+                j++;
+            else if(j==t.size())
+                return false;
+        }
+        return true;
+    }
+```
+
+
+
 # TEMPLATE
 
 Syntax highlighted code block
