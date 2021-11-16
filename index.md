@@ -247,7 +247,7 @@ int searchInsert(vector<int>& nums, int target) {
         return start; // only difference between the downside one instead of -1
     }
 ``` 
- ## 45. Jump Games II
+## 45. Jump Games II
  Dynamic programing, answer vector only updates when this index has not been updated before.
  ```
  int jump(vector<int>& nums) {
@@ -267,8 +267,8 @@ int searchInsert(vector<int>& nums, int target) {
         return 0;
     }
 ```
- ##55. Jump Game
- Find all zero point in the whole vector, for each zero, browse beforehead if nums[j]>(i-j) then bypass this zero, else we find if this zero position is the head position of the total array. If it is head position then return true, else return false.
+## 55. Jump Game
+Find all zero point in the whole vector, for each zero, browse beforehead if nums[j]>(i-j) then bypass this zero, else we find if this zero position is the head position of the total array. If it is head position then return true, else return false.
  ```
  bool canJump(vector<int>& nums) {
         if(nums[0]==0 and nums.size()!=1)
@@ -1250,6 +1250,25 @@ bool isSubsequence(string s, string t) {
     }
 ```
 
+## 62. Unique Paths
+DP approach, remember to initialize the 0 index array first
+```
+int uniquePaths(int m, int n) {
+        int dp[m][n];
+        dp[0][0]=1;
+        for(int j=1;j<n;j++)
+            dp[0][j]=1;
+        for(int i=1;i<m;i++)
+            dp[i][0]=1;
+        
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                dp[i][j]=dp[i-1][j]+dp[i][j-1];
+            }
+        }
+        return dp[m-1][n-1];
+    }
+```
 
 
 # TEMPLATE
