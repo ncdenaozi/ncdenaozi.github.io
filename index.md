@@ -1251,7 +1251,7 @@ bool isSubsequence(string s, string t) {
 ```
 
 ## 62. Unique Paths
-DP approach, remember to initialize the 0 index array first
+DP approach, remember to initialize the 0 index in both dimensions first
 ```
 int uniquePaths(int m, int n) {
         int dp[m][n];
@@ -1267,6 +1267,31 @@ int uniquePaths(int m, int n) {
             }
         }
         return dp[m-1][n-1];
+    }
+```
+
+## 300. Longest Increasing Subsequence
+DP approach,create an array of current subsequence count number, the result needs to be the max value of count array
+```
+int lengthOfLIS(vector<int>& nums) {
+        int len=nums.size();
+        int count[len];
+        
+        count[0]=1;
+        for(int i=1;i<nums.size();i++){
+            int count_max=0;
+            for(int j=0;j<i;j++){
+                if(nums[i]>nums[j])
+                    count_max=max(count[j],count_max);
+            }
+            count_max++;
+            count[i]=count_max;
+        }
+        
+        int result=1;
+        for(auto x:count)
+            result=max(result,x);
+        return result;
     }
 ```
 
