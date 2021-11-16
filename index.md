@@ -1295,6 +1295,56 @@ int lengthOfLIS(vector<int>& nums) {
     }
 ```
 
+## 525. Contiguous Array
+Hashmap, treat zero as -1 and record the subsequence sum to be zero, then compare to the max len memory.
+```
+int findMaxLength(vector<int>& nums) {
+        int sum=0;
+        int len=0;
+        unordered_map<int,int> mp; //sum->index
+        mp[0]=-1;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0)
+                sum+=-1;
+            else
+                sum+=1;
+            if(mp.find(sum)==mp.end())
+                mp[sum]=i; //do not find sum, insert new index
+            else{
+                int pre_index=mp[sum];
+                len=max(len,i-pre_index);
+            }
+        }
+        return  len;
+    }
+```
+brutal force, very stupid O(n^3)
+```
+int findMaxLength(vector<int>& nums) {
+        int max_length=0;
+        for(int i=0;i<nums.size();i++){
+            for(int j=nums.size();j>i;j--){
+                if( (j-i)<max_length)
+                    break;
+                
+                int zero=0;
+                int one=0;
+                for(int m=i;m<j;m++){
+                    if(nums[m]==1)
+                        one++;
+                    else
+                        zero++;
+                }
+                
+                if(one==zero)
+                    max_length=max(max_length,j-i);
+            }
+        }
+        return max_length;
+    }
+```
+
+
 
 # TEMPLATE
 
