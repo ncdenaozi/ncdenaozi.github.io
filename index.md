@@ -1344,6 +1344,31 @@ int findMaxLength(vector<int>& nums) {
     }
 ```
 
+## 401. Binary Watch
+Remember that bitwise operator & will output the bitwise result, 8&8=8, only translate into bool.
+```
+vector<string> readBinaryWatch(int turnedOn) {
+        vector<string> total;
+               
+        for(int hour=0;hour<=11;hour++){
+            for(int minute=0;minute<=59;minute++){ 
+                int hour_count=(bool)(hour&8)+(bool)(hour&4)+(bool)(hour&2)+(bool)(hour&1);
+                int minute_count=(bool)(minute&32)+(bool)(minute&16)+(bool)(minute&8)+(bool)(minute&4)+(bool)(minute&2)+(bool)(minute&1);
+                if((hour_count+minute_count)==turnedOn){
+                    string temp=to_string(hour);
+                        temp+=":";
+                    if(minute>=10)
+                        temp+=to_string(minute);
+                    else
+                        temp+="0"+to_string(minute);
+                    total.push_back(temp);
+                }
+            }
+        }
+        return total;
+            
+    }
+```
 
 
 # TEMPLATE
