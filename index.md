@@ -1370,7 +1370,53 @@ vector<string> readBinaryWatch(int turnedOn) {
     }
 ```
 
+## 78. Subsets
+typical backtrack solution, very elegant code, use index to control forward and use for loop to control back step
+```
+void backtrack(vector<vector<int>> &res,vector<int> &nums,vector<int> cur, int idx){
+        res.push_back(cur);
+        for(int i=idx; i<nums.size();i++){
+            vector<int> c=cur;
+            c.push_back(nums[i]);
+            backtrack(res,nums,c,i+1);
+        }
+    }
+        
+        
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> cur;
+        backtrack(res,nums,cur,0);
+        
+        return res;
+    }
+```
 
+##  322. Coin Change
+```
+int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount+1,999);
+        dp[0]=0;
+        
+        if(amount==0)
+            return 0;
+        
+        for(auto x:coins)
+            if(x<amount)
+                dp[x]=1;
+        
+        for(int i=1;i<=amount;i++){
+            for(auto c:coins)
+                if((i-c)>=0)
+                    dp[i]=min(dp[i],dp[i-c]+1);
+        }
+                
+        if(dp[amount]==999)
+            return -1;
+        else
+            return dp[amount];
+    }
+```
 # TEMPLATE
 
 Syntax highlighted code block
