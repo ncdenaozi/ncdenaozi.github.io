@@ -1,6 +1,16 @@
-# Leetcode notes
-Reach me with ncdenaozi@outlook.com
+# About me
+Specialized in Embedded system and hardware-software system development
+Have a deep base in network and network devices
 
+check mt profile at linkedin link linkedin.com/in/lianhao-xue-078251220
+Or send me email at ncdenaozi@outlook.com
+
+
+
+
+Following will be recorded as my daily Leetcode step by step improvement, lets see if I can finish this lol
+
+# Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 
