@@ -2,7 +2,7 @@
 Specialized in Embedded system and hardware-software system development
 Have a deep base in network and network devices
 
-check mt profile at linkedin link linkedin.com/in/lianhao-xue-078251220
+check my profile at linkedin link linkedin.com/in/lianhao-xue-078251220
 Or send me email at ncdenaozi@outlook.com
 
 
@@ -13,6 +13,46 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+
+## 92. Reverse Linked List II
+A very tricky solution that using stack to store the value, also it is hard to track the current position.
+```
+ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode* result=head;
+        ListNode* temp=head;
+        stack<int> stk;
+        int count=1;
+        int count2=1;
+        
+        if(left>=right)
+            return result;
+        
+        while(count<=right){
+            if(count>=left)
+                stk.push(temp->val);
+            count++;
+            temp=temp->next;
+        }
+        ListNode* buffer=temp;
+        
+        ListNode* traverse=head;
+        while(count2<right){   
+            if(count2>=left-1){
+                if(!stk.empty()){
+                    ListNode* node=new ListNode(stk.top());
+                    stk.pop();
+                    traverse->next=node;
+                }
+            }
+            
+            count2++;
+            traverse=traverse->next;
+        }
+        traverse->next=buffer;
+        
+        return result;
+    }
+```
 
 ## 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
