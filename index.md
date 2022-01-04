@@ -14,6 +14,44 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 
+## 151. Reverse Words in a String
+Read the total string into a stack and then form it into a string. 
+Note: for the last element in stack you only need to pop it without adding a space.
+```
+string reverseWords(string s) {
+        stack<string> stk;
+        string temp;
+        for(int i=0;i<s.size();i++){
+            if(s[i]!=' ')
+                temp+=s[i];
+            else{
+                if(temp!=""){
+                    stk.push(temp);
+                    temp="";
+                }
+            }    
+        }
+        if(temp!=""){
+            stk.push(temp);
+            temp="";
+        }
+        
+        string result;
+        while(!stk.empty()){
+            if(stk.size()>1){
+                result+=stk.top();
+                result+=' ';
+                stk.pop();
+            }else{
+                result+=stk.top();
+                stk.pop();
+            }
+        }
+        
+        return result;
+    }
+```
+
 ## 92. Reverse Linked List II
 A very tricky solution that using stack to store the value, also it is hard to track the current position.
 ```
