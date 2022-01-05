@@ -14,6 +14,25 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 
+## 1295. Find Numbers with Even Number of Digits
+```
+int findNumbers(vector<int>& nums) {
+        int count=0;
+        for(auto i:nums){
+            int temp=i;
+            int digit=0;
+            while(temp>0){
+                digit++;
+                temp=temp/10;
+            }
+            if(digit%2==0)
+                count++;
+        }
+            
+        return count;
+    }
+```
+
 ## 151. Reverse Words in a String
 Read the total string into a stack and then form it into a string. 
 Note: for the last element in stack you only need to pop it without adding a space.
