@@ -14,6 +14,25 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 
+
+## 204. Count Primes
+counting Primes only require up to sqrt(X).
+int countPrimes(int n) {
+        int count=0;
+        for(int X=n-1;X>1;X--){
+            bool isPrime=true;
+            for(int i=2;i*i<=X;i++){
+                if(X % i==0)
+                    isPrime=false;
+            }
+            
+            if(isPrime)
+                count++;
+        }
+        
+        return count;
+    }
+
 ## 1295. Find Numbers with Even Number of Digits
 ```
 int findNumbers(vector<int>& nums) {
