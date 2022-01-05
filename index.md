@@ -383,6 +383,25 @@ int strStr(string haystack, string needle) {
     }
 ```
 
+## 1822. Sign of the Product of an Array
+count negative number
+```
+int arraySign(vector<int>& nums) {
+        int negative=0;
+        for(auto i:nums){
+            if(i==0)
+                return 0;
+            if(i<0)
+                negative++;
+        }
+        
+        if(negative%2==1)
+            return -1;
+        else
+            return 1;
+    }
+```
+
 ## 35. Search Insert Position
 A simple binary search and output the lower bound for not-found result;
 ```     
