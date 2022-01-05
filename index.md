@@ -13,7 +13,35 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
-
+## 1807. Evaluate the Bracket Pairs of a String
+using a map to store the translation dictionary and then using the char index in string to find the replacement location.
+```
+string evaluate(string s, vector<vector<string>>& knowledge) {
+        unordered_map<string,string> mp;
+        for(vector<string> one_pair:knowledge){
+            mp[one_pair[0]]=one_pair[1];  
+        }
+        string result="";
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='('){
+                string temp="";
+                while(i<s.size()){
+                    i++;
+                    if(s[i]==')')
+                        break;
+                    else
+                        temp+=s[i];
+                }
+                if(mp.find(temp)==mp.end())
+                    result+="?";
+                else
+                    result+=mp[temp];
+            }else
+                result+=s[i];
+        }
+        return result;
+    }
+```
 
 ## 204. Count Primes
 counting Primes only require up to sqrt(X).
