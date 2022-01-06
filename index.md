@@ -43,6 +43,29 @@ string evaluate(string s, vector<vector<string>>& knowledge) {
     }
 ```
 
+## 1880. Check if Word Equals Summation of Two Words
+quite easy to translate a string into a int
+```
+bool isSumEqual(string firstWord, string secondWord, string targetWord) {
+        int firstnum=0;
+        for(int i=0;i<firstWord.size();i++){
+            firstnum+=(firstWord[i]-'a')*pow(10,firstWord.size()-i-1);
+        }
+        
+        int secondnum=0;
+        for(int i=0;i<secondWord.size();i++){
+            secondnum+=(secondWord[i]-'a')*pow(10,secondWord.size()-i-1);
+        }
+        
+        int targetnum=0;
+        for(int i=0;i<targetWord.size();i++){
+            targetnum+=(targetWord[i]-'a')*pow(10,targetWord.size()-i-1);
+        }
+        
+        return (firstnum+secondnum)==targetnum;
+    }
+```
+
 ## 204. Count Primes
 counting Primes only require up to sqrt(X).
 int countPrimes(int n) {
