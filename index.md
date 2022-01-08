@@ -13,6 +13,49 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 451. Sort Characters By Frequency
+using a hashmap to store frequency and a vector to store the unique char
+```
+string frequencySort(string s) {
+        string result;
+        unordered_map<char,int> mp;
+        vector<char> alphabet;
+        for(char x:s){
+            mp[x]++;
+            bool is_in=false;
+            for(auto i:alphabet)
+                if(i==x)
+                    is_in=true;
+            
+            if(!is_in)
+                alphabet.push_back(x);
+        }
+       
+        while(!alphabet.empty()){
+            int largest=0;
+            int index=0;
+            char c;
+            for(int i=0;i<alphabet.size();i++){
+                if(mp[alphabet[i]]>largest){
+                    largest=mp[alphabet[i]];
+                    index=i;
+                    c=alphabet[i];
+                }
+            }
+            int time=largest;
+            
+            alphabet.erase(alphabet.begin()+index);
+                
+            while(time>0){
+                result+=c;
+                time--;
+            }
+             
+        }
+        return result; 
+    }
+```
+
 ## 1807. Evaluate the Bracket Pairs of a String
 using a map to store the translation dictionary and then using the char index in string to find the replacement location.
 ```
