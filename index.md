@@ -13,6 +13,27 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1653. Minimum Deletions to Make String Balanced
+the key idea is that to count the pairs of a b-a sequence.
+```
+int minimumDeletions(string s) {
+        stack<char> stk;
+        int count=0;
+        stk.push(s[0]);
+        for(int i=1;i<s.size();i++){
+            if(stk.empty())
+                stk.push(s[i]);
+            else if(stk.top()=='b' and s[i]=='a'){
+                count++;
+                stk.pop();
+            }else
+                stk.push(s[i]);   
+        }
+        
+        return count;
+    }
+```
+
 ## 451. Sort Characters By Frequency
 using a hashmap to store frequency and a vector to store the unique char
 ```
