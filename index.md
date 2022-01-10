@@ -13,6 +13,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1486. XOR Operation in an Array
+very easy approach, initialize and calculate
+```
+int xorOperation(int n, int start) {
+        vector<int> arr;
+        for(int i=0;i<n;i++){
+            arr.push_back(start+2*i);
+        }
+        
+        if(arr.size()==1)
+            return arr[0];
+        
+        int result=arr[0];
+        for(int x=1;x<arr.size();x++){
+            result=result^arr[x];
+        }
+        
+        return result;
+    }
+```
 
 ## 506. Relative Ranks
 use a hash map to store the ranking
