@@ -14,6 +14,51 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 
+## 506. Relative Ranks
+use a hash map to store the ranking
+```
+vector<string> findRelativeRanks(vector<int>& score) {
+        vector<string> result;
+        int visited_size=score.size();
+        bool visited[visited_size];
+        for(int i=0;i<visited_size;i++)
+            visited[i]=false;
+        
+        unordered_map<int,int> mp;
+        
+        int count=1;
+        for(int j=0;j<score.size();j++){
+            int current_max=INT_MIN;
+            int index=-1;
+            for(int i=0;i<score.size();i++){
+                if(visited[i]==false){
+                    if(score[i]>current_max){
+                        index=i;
+                        current_max=score[i];
+                    }
+                }
+                
+            }
+            visited[index]=true;    
+            mp[index]=count;
+            count++;
+        }
+        
+        for(int i=0;i<visited_size;i++){
+            if(mp[i]==1)
+                result.push_back("Gold Medal");
+            else if(mp[i]==2)
+                result.push_back("Silver Medal");
+            else if(mp[i]==3)
+                result.push_back("Bronze Medal");
+            else
+                result.push_back(to_string(mp[i]));
+        }
+        
+        return result;   
+    }
+```
+
 ## 2095. Delete the Middle Node of a Linked List
 traverse and delete, note that only need to count the previous node of middle point, and you always need to check corner cases.
 ```
