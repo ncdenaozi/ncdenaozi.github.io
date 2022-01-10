@@ -13,6 +13,37 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+
+## 2095. Delete the Middle Node of a Linked List
+traverse and delete, note that only need to count the previous node of middle point, and you always need to check corner cases.
+```
+ListNode* deleteMiddle(ListNode* head) {
+        ListNode* count=head;
+        int c=0;
+        while(count){
+            c++;
+            count=count->next;
+        }
+        
+        if(c==1)
+            return nullptr;
+        
+        int middle=c/2;
+        
+        ListNode* start=head;
+        while(middle>1){
+            start=start->next;
+            middle--;
+        }
+        if(start->next->next==nullptr)
+            start->next=nullptr;
+        else
+            start->next=start->next->next;
+        
+        return head;
+    }
+```
+
 ## 1653. Minimum Deletions to Make String Balanced
 the key idea is that to count the pairs of a b-a sequence.
 ```
