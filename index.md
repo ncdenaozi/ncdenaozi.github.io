@@ -13,6 +13,37 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 515. Find Largest Value in Each Tree Row
+use a modified BFS and a control value queue.size to implement this same layer sense.
+```
+vector<int> largestValues(TreeNode* root) {
+        vector<int> result;
+        queue<TreeNode*> q;
+        TreeNode* head=root;
+        
+        if(root==nullptr)
+            return result;
+        
+        q.push(head);
+        while(!q.empty()){
+            int q_size=q.size();
+            int largest=INT_MIN;
+            for(int i=0;i<q_size;i++){
+                TreeNode* temp=q.front();
+                q.pop();
+                largest=max(largest,temp->val);
+                if(temp->left)
+                    q.push(temp->left);
+                if(temp->right)
+                    q.push(temp->right); 
+            }
+            result.push_back(largest);
+        }
+        
+        return result;
+    }
+```
+
 ## 1486. XOR Operation in an Array
 very easy approach, initialize and calculate
 ```
