@@ -13,6 +13,36 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1952. Three Divisors
+Need to implement a is_prime funcctiona to check whether the square root is also a prime.
+```
+bool isPrime(int n){
+        if(n==2 or n==1)
+            return true;
+        
+        for(float i=2;i*i<=n;i++){
+            float d=(float)n/(float)i;
+            if(d==(int)d)
+                return false;
+        }
+        
+        return true;
+    }
+    
+    bool isThree(int n) {       
+        if(n==2 or n==1)
+            return false;
+            
+        for(int i=2;i*i<=n;i++){
+            if(i*i==n){
+                if(isPrime(i))
+                    return true;
+            }
+        }
+        return false;
+    }
+```
+
 ## 515. Find Largest Value in Each Tree Row
 use a modified BFS and a control value queue.size to implement this same layer sense.
 ```
