@@ -13,6 +13,32 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1588. Sum of All Odd Length Subarrays
+brutal force solution
+```
+int sumOddLengthSubarrays(vector<int>& arr) {
+        int total_len=arr.size();
+        vector<int> len;
+        for(int i=1;i<=total_len;i=i+2){
+            len.push_back(i);
+        }
+        
+        int sum=0;
+        for(auto x:len){
+            for(int s=0;s+x-1<arr.size();s++){ //begin index of subarray
+                int this_arr=0;
+                for(int index=0;index<x;index++){
+                    this_arr+=arr[s+index];
+                }
+                cout<<this_arr<<endl;
+                sum+=this_arr;
+            }
+        }
+        
+        return sum;
+    }
+```
+
 ## 1952. Three Divisors
 Need to implement a is_prime funcctiona to check whether the square root is also a prime.
 ```
