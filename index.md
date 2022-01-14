@@ -13,6 +13,30 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1791. Find Center of Star Graph
+count the ingress and outgress degree of any certain node, use a huge array to store the node degree count
+```
+int findCenter(vector<vector<int>>& edges) {
+        int node[100001];
+        for(int i=0;i<100001;i++)
+            node[i]=0;
+        
+        for(auto v:edges){
+            for(auto n:v){
+                node[n]++;
+            }    
+        }
+        int largest=0;
+        int index=0;
+        for(int x=0;x<100001;x++){
+            if(largest<node[x]){
+                largest=node[x];
+                index=x;
+            }
+        }
+        return index;
+    }
+```
 ## 1588. Sum of All Odd Length Subarrays
 brutal force solution
 ```
