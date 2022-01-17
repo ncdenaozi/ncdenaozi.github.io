@@ -13,6 +13,24 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 171. Excel Sheet Column Number
+brutal force and using hashmap, optimal lambda solution is [&](const char &i){ r = (r * 26) + (i - 64);}
+```
+int titleToNumber(string columnTitle) {
+        unordered_map<char,int> mp;
+        for(int i=0;i<26;i++)
+            mp.insert(make_pair((char)'A'+i,i+1));
+        
+        int result=0;
+        for(int i=0;i<columnTitle.size();i++){
+            result+=pow(26,(columnTitle.size()-i-1))*mp[columnTitle[i]];
+        }
+            
+            
+        return result;
+    }
+```
+
 ## 1791. Find Center of Star Graph
 count the ingress and outgress degree of any certain node, use a huge array to store the node degree count
 ```
