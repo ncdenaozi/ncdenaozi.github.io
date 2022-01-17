@@ -13,6 +13,34 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+
+## 832. Flipping an Image
+image flipping, description is kinda clear and easy
+```
+vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        vector<vector<int>> result1;
+        vector<vector<int>> result2;
+        
+        for(vector<int> vec:image){
+            vector<int> temp;
+            for(int i=vec.size()-1;i>=0;i--){
+                temp.push_back(vec[i]);
+            }
+            result1.push_back(temp);
+        }
+        
+        for(vector<int> vec:result1){
+            vector<int> temp;
+            for(int i=0;i<vec.size();i++){
+                temp.push_back(!vec[i]);
+            }
+            result2.push_back(temp);
+        }
+        
+        return result2;
+    }
+```
+
 ## 171. Excel Sheet Column Number
 brutal force and using hashmap, optimal lambda solution is [&](const char &i){ r = (r * 26) + (i - 64);}
 ```
