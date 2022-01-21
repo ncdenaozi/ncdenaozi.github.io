@@ -21,8 +21,47 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+### 134. Gas Station
+```
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        if(gas.size()!=cost.size())
+            return -1;
+        
+        int result=-1;
+        int step=gas.size();
+        
+        for(int i=0;i<step;i++){
+            if(gas[i]==0 and cost[i]==0){
+                
+            }
+            else if(gas[i]>=cost[i]){
+                int tank=gas[i];
+                cout<<tank<<endl;
+                int current=i;
+                int next=(current+1)%step;
+                while(next!=i){
+                    if(tank<cost[current])
+                        break;
+                    else
+                        tank=tank-cost[current]+gas[next];
+                    current=next;
+                    next=(current+1)%step;
+                    if(tank<0)
+                        break;
+                }
+                if(tank>=cost[current]){
+                    result=i;
+                    break;
+                }
+            }
+        }
+                
+        return result;
+    }
+```
 
-## 2023. Number of Pairs of Strings With Concatenation Equal to Target
+
+### 2023. Number of Pairs of Strings With Concatenation Equal to Target
 O(n2) approach, brutal force
 ```
 int numOfPairs(vector<string>& nums, string target) {
@@ -43,7 +82,7 @@ int numOfPairs(vector<string>& nums, string target) {
 ```
 
 
-## 832. Flipping an Image
+### 832. Flipping an Image
 image flipping, description is kinda clear and easy
 ```
 vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
@@ -70,7 +109,7 @@ vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
     }
 ```
 
-## 171. Excel Sheet Column Number
+### 171. Excel Sheet Column Number
 brutal force and using hashmap, optimal lambda solution is [&](const char &i){ r = (r * 26) + (i - 64);}
 ```
 int titleToNumber(string columnTitle) {
@@ -88,7 +127,7 @@ int titleToNumber(string columnTitle) {
     }
 ```
 
-## 1791. Find Center of Star Graph
+### 1791. Find Center of Star Graph
 count the ingress and outgress degree of any certain node, use a huge array to store the node degree count
 ```
 int findCenter(vector<vector<int>>& edges) {
@@ -112,7 +151,7 @@ int findCenter(vector<vector<int>>& edges) {
         return index;
     }
 ```
-## 1588. Sum of All Odd Length Subarrays
+### 1588. Sum of All Odd Length Subarrays
 brutal force solution
 ```
 int sumOddLengthSubarrays(vector<int>& arr) {
@@ -138,7 +177,7 @@ int sumOddLengthSubarrays(vector<int>& arr) {
     }
 ```
 
-## 1952. Three Divisors
+### 1952. Three Divisors
 Need to implement a is_prime funcctiona to check whether the square root is also a prime.
 ```
 bool isPrime(int n){
@@ -168,7 +207,7 @@ bool isPrime(int n){
     }
 ```
 
-## 515. Find Largest Value in Each Tree Row
+### 515. Find Largest Value in Each Tree Row
 use a modified BFS and a control value queue.size to implement this same layer sense.
 ```
 vector<int> largestValues(TreeNode* root) {
@@ -199,7 +238,7 @@ vector<int> largestValues(TreeNode* root) {
     }
 ```
 
-## 1486. XOR Operation in an Array
+### 1486. XOR Operation in an Array
 very easy approach, initialize and calculate
 ```
 int xorOperation(int n, int start) {
@@ -220,7 +259,7 @@ int xorOperation(int n, int start) {
     }
 ```
 
-## 506. Relative Ranks
+### 506. Relative Ranks
 use a hash map to store the ranking
 ```
 vector<string> findRelativeRanks(vector<int>& score) {
@@ -265,7 +304,7 @@ vector<string> findRelativeRanks(vector<int>& score) {
     }
 ```
 
-## 2095. Delete the Middle Node of a Linked List
+### 2095. Delete the Middle Node of a Linked List
 traverse and delete, note that only need to count the previous node of middle point, and you always need to check corner cases.
 ```
 ListNode* deleteMiddle(ListNode* head) {
@@ -295,7 +334,7 @@ ListNode* deleteMiddle(ListNode* head) {
     }
 ```
 
-## 1653. Minimum Deletions to Make String Balanced
+### 1653. Minimum Deletions to Make String Balanced
 the key idea is that to count the pairs of a b-a sequence.
 ```
 int minimumDeletions(string s) {
@@ -316,7 +355,7 @@ int minimumDeletions(string s) {
     }
 ```
 
-## 451. Sort Characters By Frequency
+### 451. Sort Characters By Frequency
 using a hashmap to store frequency and a vector to store the unique char
 ```
 string frequencySort(string s) {
@@ -359,7 +398,7 @@ string frequencySort(string s) {
     }
 ```
 
-## 1807. Evaluate the Bracket Pairs of a String
+### 1807. Evaluate the Bracket Pairs of a String
 using a map to store the translation dictionary and then using the char index in string to find the replacement location.
 ```
 string evaluate(string s, vector<vector<string>>& knowledge) {
@@ -389,7 +428,7 @@ string evaluate(string s, vector<vector<string>>& knowledge) {
     }
 ```
 
-## 1880. Check if Word Equals Summation of Two Words
+### 1880. Check if Word Equals Summation of Two Words
 quite easy to translate a string into a int
 ```
 bool isSumEqual(string firstWord, string secondWord, string targetWord) {
@@ -412,7 +451,7 @@ bool isSumEqual(string firstWord, string secondWord, string targetWord) {
     }
 ```
 
-## 204. Count Primes
+### 204. Count Primes
 counting Primes only require up to sqrt(X).
 int countPrimes(int n) {
         int count=0;
@@ -430,7 +469,7 @@ int countPrimes(int n) {
         return count;
     }
 
-## 1295. Find Numbers with Even Number of Digits
+### 1295. Find Numbers with Even Number of Digits
 ```
 int findNumbers(vector<int>& nums) {
         int count=0;
@@ -449,7 +488,7 @@ int findNumbers(vector<int>& nums) {
     }
 ```
 
-## 151. Reverse Words in a String
+### 151. Reverse Words in a String
 Read the total string into a stack and then form it into a string. 
 Note: for the last element in stack you only need to pop it without adding a space.
 ```
@@ -487,7 +526,7 @@ string reverseWords(string s) {
     }
 ```
 
-## 92. Reverse Linked List II
+### 92. Reverse Linked List II
 A very tricky solution that using stack to store the value, also it is hard to track the current position.
 ```
 ListNode* reverseBetween(ListNode* head, int left, int right) {
@@ -527,7 +566,7 @@ ListNode* reverseBetween(ListNode* head, int left, int right) {
     }
 ```
 
-## 7. Reverse Integer
+### 7. Reverse Integer
 use brutal force to solve this method, note that there already exists a macro called INT_MAX and INT_MIN in cpp std library, or can use (1<<31)-1 as max count.
 **really bad idea not to use a stack instead of a vector :<**
 ```
@@ -555,7 +594,7 @@ use brutal force to solve this method, note that there already exists a macro ca
     }
 ```    
     
-## 9. Palindrome Number
+### 9. Palindrome Number
 use simple vector not stack. I thought vector may be easier to control with head&tail pointer because it is quite difficult to remember the number poped out of stack, probably need another memory list?
 Speed is quite slow, optimal solution is that we only need to reverse half of the number, kind of tricky one.
 ```
@@ -585,7 +624,7 @@ bool isPalindrome(int x) {
         return true;
         }
 ```    
-## 13. Roman to Integer
+### 13. Roman to Integer
 A hashmap<char,int>. Note that normal ROMAN NUMBER is written in large-to-small but things like IV is actually small to large, so have a memory to locate the last ROMAN digit.
 **Pity that leetcode need premium to unlock the standard solution.**
 ```
@@ -604,7 +643,7 @@ int romanToInt(string s) {
     }
 }; 
 ```
-## 14. Longest Common Prefix
+### 14. Longest Common Prefix
 Brute force with a decoder-like program, just runs the whole comparison char by char.
 standard solution is using **divide and conquer**, I like the idea but the implementation could be fussy.
 ```
@@ -627,7 +666,7 @@ string longestCommonPrefix(vector<string>& strs) {
     }
 }; 
 ```   
-## 20. Valid Parentheses
+### 20. Valid Parentheses
 I fail for the first time because I am thinking how can I deal with the right side parenthese in the stack. But then I found out that only left-side parentheses should be pushed into the stack and the right-side is only used as a comparison.
 ```                                     
 bool isValid(string s) {
@@ -676,7 +715,7 @@ bool isValid(string s) {
             return false;
 }
 ```
-## 21. Merge Two Sorted Lists
+### 21. Merge Two Sorted Lists
 Merge sort approach, each time only look at two node.                                     
 ```
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
@@ -706,7 +745,7 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         return result;
     }                                     
 ```
-## 26. Remove Duplicates from Sorted Array
+### 26. Remove Duplicates from Sorted Array
 Use std::vector.erase(vector.begin()+i) to delete one element from the space. Note that after delete operation, the position and the size both reduce itself so i-- is needed.
 Speed is quite slow, standard solution is in JAVA.
 ```
@@ -720,7 +759,7 @@ int removeDuplicates(vector<int>& nums) {
         return nums.size();
     }
 ```
-## 27. Remove Element
+### 27. Remove Element
 Almost same as problem 26.
 ```
      int removeElement(vector<int>& nums, int val) {
@@ -734,7 +773,7 @@ Almost same as problem 26.
     }
 ```
 
-## 28. implement strStr()
+### 28. implement strStr()
 Use std::string.compare(int position, int length, string substring) and traverse the haystack, there is a lot of corner case so add a few conditions.
 ```     
 int strStr(string haystack, string needle) {
@@ -752,7 +791,7 @@ int strStr(string haystack, string needle) {
     }
 ```
 
-## 1822. Sign of the Product of an Array
+### 1822. Sign of the Product of an Array
 count negative number
 ```
 int arraySign(vector<int>& nums) {
@@ -771,7 +810,7 @@ int arraySign(vector<int>& nums) {
     }
 ```
 
-## 35. Search Insert Position
+### 35. Search Insert Position
 A simple binary search and output the lower bound for not-found result;
 ```     
 int searchInsert(vector<int>& nums, int target) {
@@ -789,7 +828,7 @@ int searchInsert(vector<int>& nums, int target) {
         return start; // only difference between the downside one instead of -1
     }
 ``` 
-## 45. Jump Games II
+### 45. Jump Games II
  Dynamic programing, answer vector only updates when this index has not been updated before.
  ```
  int jump(vector<int>& nums) {
@@ -809,7 +848,7 @@ int searchInsert(vector<int>& nums, int target) {
         return 0;
     }
 ```
-## 55. Jump Game
+### 55. Jump Game
 Find all zero point in the whole vector, for each zero, browse beforehead if nums[j]>(i-j) then bypass this zero, else we find if this zero position is the head position of the total array. If it is head position then return true, else return false.
  ```
  bool canJump(vector<int>& nums) {
@@ -834,7 +873,7 @@ Find all zero point in the whole vector, for each zero, browse beforehead if num
     }
 ``` 
  
-## 704. Binary search
+### 704. Binary search
 Almost same as simple binary search, the time complexity is O(logn) for already sorted array.
 ```
 int search(vector<int>& nums, int target) {
@@ -851,7 +890,7 @@ int search(vector<int>& nums, int target) {
     }
 ```
 
-## 58. Length of Last Word
+### 58. Length of Last Word
 use two pointer to identify the space, right pointer is the rightmost first non-space char and left pointer is the rightmost near-right sapce char.
 ```
      int lengthOfLastWord(string s) {
@@ -871,7 +910,7 @@ use two pointer to identify the space, right pointer is the rightmost first non-
     }
 ```
 
-## 66. Plus one
+### 66. Plus one
 An idea of carryout, note that the last carryout means you need extra 1 added to the front of vector which is the first digits.
 ```
      vector<int> plusOne(vector<int>& digits) {
@@ -894,7 +933,7 @@ An idea of carryout, note that the last carryout means you need extra 1 added to
     }
 ```
 
-## 67. Add binary
+### 67. Add binary
 define a single digit function to add one digit together.
 ```
 char addTwoBinaryNumbers(char a, char b, int& carry){
@@ -949,7 +988,7 @@ char addTwoBinaryNumbers(char a, char b, int& carry){
     }
 ```
 
-## 69. Sqrt(X)
+### 69. Sqrt(X)
 Like a mathematical induction method to increment and try.
 ```
 int mySqrt(int x) {
@@ -966,7 +1005,7 @@ int mySqrt(int x) {
     }
 ```
 
-## 70. Climbing Stairs
+### 70. Climbing Stairs
 iterative approach.
 ```
 int climbStairs(int n) {
@@ -986,7 +1025,7 @@ int climbStairs(int n) {
         return 0;
     }
 ```                     
-## 83. Remove Duplicates from Sorted List
+### 83. Remove Duplicates from Sorted List
 Use a memory to store the last smaller node since the list is non-decreasing order. Special case is that the end of list but there is a equal between memory and temp you need to free memory->next.
 ```                      
 ListNode* deleteDuplicates(ListNode* head) {
@@ -1012,7 +1051,7 @@ ListNode* deleteDuplicates(ListNode* head) {
         return head;
     }                      
 ```
-## 88. Merge Sorted Array
+### 88. Merge Sorted Array
 Use a easy approach to push the original array behind the inserted position.
 ``` 
  void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
@@ -1036,7 +1075,7 @@ Use a easy approach to push the original array behind the inserted position.
         }
     }
  ```
-## 94. Binary Tree Inorder Traversal
+### 94. Binary Tree Inorder Traversal
 Use reference to pass the vector parameter.
 ``` 
  void Traverse(TreeNode* &root, vector<int> &result){
@@ -1055,7 +1094,7 @@ Use reference to pass the vector parameter.
         return result;
     }
 ``` 
-## 100. Same Tree
+### 100. Same Tree
  Tricky method I think, there is a lot of corner case.
  ```
 bool isSameTree(TreeNode* p, TreeNode* q) {
@@ -1070,7 +1109,7 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
     }
 ``` 
  
- ## 101. Symmetric Tree
+ ### 101. Symmetric Tree
  Iterative style, note that the condition should be in && relationship.
  ```
  bool check(TreeNode* &a,TreeNode* &b){
@@ -1086,7 +1125,7 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
         return check(root->left,root->right);
     }
 ```
- ## 104. Maximum Depth of Binary Tree
+ ### 104. Maximum Depth of Binary Tree
  It is very silly that leetcode will refuse a ternary operation but only accept MAX() macro.
 ``` 
  int maxDepth(TreeNode* root) {
@@ -1097,7 +1136,7 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
         }
     }
 ``` 
- ## 108. Covert Sorted Array to Binary Tree
+ ### 108. Covert Sorted Array to Binary Tree
  Recursive Method, use left and right to control the recursive size.
 ``` 
  TreeNode* CreateTree(int l, int r, vector<int> &nums){
@@ -1118,7 +1157,7 @@ TreeNode* sortedArrayToBST(vector<int>& nums) {
 }
 ``` 
  
- ## 110. Balanced Binary Tree
+ ### 110. Balanced Binary Tree
  a very clever/lazy approach, slow but effective. Note that !flag statement is used to improve performance.
 ``` 
  bool flag=true;
@@ -1138,7 +1177,7 @@ bool isBalanced(TreeNode* root) {
     }
 ``` 
  
- ## 111. Minimum Depth of Binary Tree
+ ### 111. Minimum Depth of Binary Tree
  Need to focus the node without nullptr left.
 ``` 
  int minDepth(TreeNode* root) {
@@ -1152,7 +1191,7 @@ bool isBalanced(TreeNode* root) {
             return 1+min(minDepth(root->left),minDepth(root->right));
     }
 ``` 
- ## 112. Path Sum
+ ### 112. Path Sum
  Iterative approach. 
 ``` 
  bool hasPathSum(TreeNode* root, int targetSum) {
@@ -1161,7 +1200,7 @@ bool isBalanced(TreeNode* root) {
 return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targetSum-root->val);
 ``` 
  
- ## 118. Pascal's Triangle
+ ### 118. Pascal's Triangle
  Note the equation result[i][j]=result[i-1][j]+result[i-1][j+1].
 ``` 
  vector<vector<int>> generate(int numRows) {
@@ -1179,7 +1218,7 @@ return hasPathSum(root->left,targetSum-root->val) || hasPathSum(root->right,targ
         return result;
     }
  ```
- ## 119. Pascal's Triangle II
+ ### 119. Pascal's Triangle II
  Same as 118                                  
 ```
 vector<int> getRow(int rowIndex) {
@@ -1198,7 +1237,7 @@ vector<int> getRow(int rowIndex) {
         return result[rowIndex];
     }
 ```
-## 121. Best Time to Buy and Sell Stock
+### 121. Best Time to Buy and Sell Stock
 O(n) Approach, find min point and after minpoint just compare the min_profit.
 ```
 int maxProfit(vector<int>& prices) {
@@ -1215,7 +1254,7 @@ int maxProfit(vector<int>& prices) {
     }
 ```
  
-## 125. Valid Palindrome
+### 125. Valid Palindrome
 Note that start==end||start==end+1 deals with both odd and even number cases.
 ```
 bool isPalindrome(string s) {
@@ -1243,7 +1282,7 @@ bool isPalindrome(string s) {
     }
 ```
 
-## 136. Single Number
+### 136. Single Number
 bitwise operation xor is used to identify the only number left.
 ```
 int singleNumber(vector<int>& nums) {
@@ -1254,7 +1293,7 @@ int singleNumber(vector<int>& nums) {
         return result;
     }
 ```       
-## 141. Linked List Cycle
+### 141. Linked List Cycle
 Use a sily approach to save the pointer address
 Standard solution: A fast route with *2 speed and A slow route with normal speed, if it is a cycled list then these two route will meet again.
 ```
@@ -1275,7 +1314,7 @@ bool hasCycle(ListNode *head) {
         return false;
     }
 ```             
-## 142. Linked List Cycle II
+### 142. Linked List Cycle II
 fast slow pointer approach.
 ```
 ListNode *detectCycle(ListNode *head) {
@@ -1304,7 +1343,7 @@ ListNode *detectCycle(ListNode *head) {
         return nullptr;
     }             
 ```
-## 144. Binary Tree Preorder Traversal
+### 144. Binary Tree Preorder Traversal
 Tree preorder traversal, very simple iterative mode
 ```
 void Traversal(TreeNode* root, vector<int> &result){
@@ -1321,7 +1360,7 @@ vector<int> preorderTraversal(TreeNode* root) {
         return result;
     }
 ```             
-## 145. Binary Tree Postorder Traversal
+### 145. Binary Tree Postorder Traversal
 Same as above             
 ```
 void Traversal(TreeNode* root, vector<int> &result){
@@ -1338,7 +1377,7 @@ void Traversal(TreeNode* root, vector<int> &result){
         return result;
     }             
 ```
-## 160. Intersection of Two Linked Lists
+### 160. Intersection of Two Linked Lists
 A slow approach in O(n^2)             
 ```
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -1360,7 +1399,7 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         return result;
     }
 ```             
-## 168. Excel Sheet Column Title             
+### 168. Excel Sheet Column Title             
 ```
 string convertToTitle(int columnNumber) {
         string res="";
@@ -1378,7 +1417,7 @@ string convertToTitle(int columnNumber) {
     }             
 ```
 
-## Majorith Elements
+### Majorith Elements
 The trick here is count-- when it is not the number, also never let the count become a negative number.             
 ```
 int majorityElement(vector<int>& nums) {
@@ -1396,7 +1435,7 @@ int majorityElement(vector<int>& nums) {
         return current;
     }
 ```
-## 344. Reverse String
+### 344. Reverse String
 two pointer way             
 ```
 void reverseString(vector<char>& s) {
@@ -1424,7 +1463,7 @@ void reverseString(vector<char>& s) {
 }             
 ```
 
-## 289. Game of Life
+### 289. Game of Life
 not in place and not padding method but at least guarantee in time.         
 ```
 int single_cell_case(vector<vector<int>>& board,int x, int y){ //use for single cell statistic, return the value of its total neighbors
@@ -1515,7 +1554,7 @@ void gameOfLife(vector<vector<int>>& board) {
     }
 ```
 
-## 495. Teemo Attacking
+### 495. Teemo Attacking
 A memory to record the last hit for counting.
 ```
 int findPoisonedDuration(vector<int>& timeSeries, int duration) {
@@ -1539,7 +1578,7 @@ int findPoisonedDuration(vector<int>& timeSeries, int duration) {
     }
 ```
 
-## 217. Contains Duplicate
+### 217. Contains Duplicate
 a brute force sliding window solution, optimum solution is using a std::set to figure whether set and vector size is equal.
 ```
 bool containsDuplicate(vector<int>& nums) {
@@ -1558,7 +1597,7 @@ bool containsDuplicate(vector<int>& nums) {
     }
 ```
 
-## 219. Contains Duplicate II
+### 219. Contains Duplicate II
 almost same sliding windows as above, optimum solution is hashmap.
 ```
 bool containsNearbyDuplicate(vector<int>& nums, int k) {
@@ -1581,7 +1620,7 @@ bool containsNearbyDuplicate(vector<int>& nums, int k) {
     }
 ```
 
-## 98. Validate Binary Search Tree
+### 98. Validate Binary Search Tree
 using a min and max pointer to illustrate subtree call
 ```
 bool ans(TreeNode* root, TreeNode* Low, TreeNode* High){
@@ -1597,7 +1636,7 @@ bool isValidBST(TreeNode* root) {
     }
 ```
 
-## 226. Invert Binary Tree
+### 226. Invert Binary Tree
 recursion method
 ```
 TreeNode* invertTree(TreeNode* root) {
@@ -1615,7 +1654,7 @@ TreeNode* invertTree(TreeNode* root) {
     }
 ```
 
-## 1557. Minimum Number of Vertices to Reach All Nodes
+### 1557. Minimum Number of Vertices to Reach All Nodes
 only need to exclude those point which has an ingress edge
 ```
 vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
@@ -1635,7 +1674,7 @@ vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
     }
 ```
 
-## 236. Lowest Common Ancestor of a Binary Tree
+### 236. Lowest Common Ancestor of a Binary Tree
 recursive call to make sure check, left, right at least have 2 TRUE and that is lowest node.
 ```
 class Solution {
@@ -1664,7 +1703,7 @@ public:
 };
 ```
 
-## 547. Number of Provinces
+### 547. Number of Provinces
 Breath FS, queue+visited array+adjacunt array.
 ```
 int findCircleNum(vector<vector<int>>& isConnected) {
@@ -1698,7 +1737,7 @@ int findCircleNum(vector<vector<int>>& isConnected) {
     }
 ```
 
-## 199. Binary Tree Right Side View
+### 199. Binary Tree Right Side View
 ```
 BFS and return the last node of one loop
 vector<int> rightSideView(TreeNode* root) {
@@ -1727,7 +1766,7 @@ vector<int> rightSideView(TreeNode* root) {
     }
 ``` 
  
-## 200. Number of Islands
+### 200. Number of Islands
 A very decent way to cover area, traverse and if there is an area then replace 1 with 0 and cover its 4-direction neighbors.
 ``` 
 void dfs(vector<vector<char>>& grid, int row, int column){
@@ -1772,7 +1811,7 @@ void dfs(vector<vector<char>>& grid, int row, int column){
     }
 ``` 
 
-## 392. Is Subsequence
+### 392. Is Subsequence
 use Two pointer method to scan the whole string
 ```
 bool isSubsequence(string s, string t) {
@@ -1792,7 +1831,7 @@ bool isSubsequence(string s, string t) {
     }
 ```
 
-## 62. Unique Paths
+### 62. Unique Paths
 DP approach, remember to initialize the 0 index in both dimensions first
 ```
 int uniquePaths(int m, int n) {
@@ -1812,7 +1851,7 @@ int uniquePaths(int m, int n) {
     }
 ```
 
-## 300. Longest Increasing Subsequence
+### 300. Longest Increasing Subsequence
 DP approach,create an array of current subsequence count number, the result needs to be the max value of count array
 ```
 int lengthOfLIS(vector<int>& nums) {
@@ -1837,7 +1876,7 @@ int lengthOfLIS(vector<int>& nums) {
     }
 ```
 
-## 525. Contiguous Array
+### 525. Contiguous Array
 Hashmap, treat zero as -1 and record the subsequence sum to be zero, then compare to the max len memory.
 ```
 int findMaxLength(vector<int>& nums) {
@@ -1886,7 +1925,7 @@ int findMaxLength(vector<int>& nums) {
     }
 ```
 
-## 401. Binary Watch
+### 401. Binary Watch
 Remember that bitwise operator & will output the bitwise result, 8&8=8, only translate into bool.
 ```
 vector<string> readBinaryWatch(int turnedOn) {
@@ -1912,7 +1951,7 @@ vector<string> readBinaryWatch(int turnedOn) {
     }
 ```
 
-## 78. Subsets
+### 78. Subsets
 typical backtrack solution, very elegant code, use index to control forward and use for loop to control back step
 ```
 void backtrack(vector<vector<int>> &res,vector<int> &nums,vector<int> cur, int idx){
@@ -1934,7 +1973,7 @@ void backtrack(vector<vector<int>> &res,vector<int> &nums,vector<int> cur, int i
     }
 ```
 
-##  322. Coin Change
+###  322. Coin Change
 ```
 int coinChange(vector<int>& coins, int amount) {
         vector<int> dp(amount+1,999);
