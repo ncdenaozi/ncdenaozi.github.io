@@ -1,17 +1,44 @@
-# About me
+# Who am I?
+Lianhao Xue or written in simplified Chinese as 薛连昊
 Specialized in Embedded system and hardware-software system development
-Have a deep base in network and network devices
+Of course, I know( only be familiar with) C++, because a man can never master C++.
+Have a deep base in network and network devices, including FPGA development and sequential logics.
+Also an amateur photographer, travel and taking pictures.
+Former eveonline player.
 
+# Where am I?
+New York, USA
+
+# How to reach me?
 check my profile at linkedin link linkedin.com/in/lianhao-xue-078251220
-Or send me email at ncdenaozi@outlook.com
-
-
+Or send me email at ncdenaozi@outlook.com, u decide!
 
 
 Following will be recorded as my daily Leetcode step by step improvement, lets see if I can finish this lol
 
 # Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
+
+
+## 2023. Number of Pairs of Strings With Concatenation Equal to Target
+O(n2) approach, brutal force
+```
+int numOfPairs(vector<string>& nums, string target) {
+        int result=0;
+        
+        for(int i=0;i<nums.size();i++){
+            for(int j=0;j<nums.size();j++){
+                if(i!=j){
+                    string temp=nums[i]+nums[j];
+                        if(temp==target)
+                            result++;
+                }
+            }
+        }
+        
+        return result;
+    }
+```
 
 
 ## 832. Flipping an Image
