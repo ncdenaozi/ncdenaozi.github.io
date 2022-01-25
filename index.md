@@ -20,6 +20,34 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 973. K Closest Points to Origin
+there is a way to solve it in O(Nlogk) ways but using priority queue, i think this visited array idea is better because selection sort algorithm is used.
+```
+vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        vector<vector<int>> result;
+        
+        vector<int> visited(points.size());
+        
+        while(K!=0){
+            double smallest=INT_MAX;
+            int index=0;
+            for(int i=0;i<points.size();i++){
+                if(visited[i]==0){
+                    double distance=sqrt(points[i][0]*points[i][0]+points[i][1]*points[i][1]);
+                    if(distance<smallest){
+                        smallest=distance;
+                        index=i;
+                    }
+                }    
+            }
+            visited[index]=1;
+            
+            result.push_back(points[index]);
+            K--;
+        }
+        return result;
+    }
+```
 ### 134. Gas Station
 ```
 int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
