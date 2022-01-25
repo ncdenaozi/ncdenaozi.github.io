@@ -20,6 +20,52 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 783. Minimum Distance Between BST Nodes
+```
+int minDiffInBST(TreeNode* root) {
+        if(root==nullptr)
+            return INT_MAX;
+        
+        int distance=INT_MAX;
+        
+        if(!root->left and root->right){
+            TreeNode* temp=root->right;
+            while(temp->left)
+                temp=temp->left;
+            
+            distance=temp->val-root->val;
+            return min(distance,minDiffInBST(root->right));
+        }
+            
+        else if(!root->right and root->left){
+            TreeNode* temp=root->left;
+            while(temp->right)
+                temp=temp->right;
+            
+            distance=root->val-temp->val;
+            return min(distance,minDiffInBST(root->left));
+        }
+            
+        else if(root->left and root->right){
+            TreeNode* rgt=root->right;
+            while(rgt->left)
+                rgt=rgt->left;
+            
+            TreeNode* lft=root->left;
+            while(lft->right)
+                lft=lft->right;
+            
+            
+            distance=min(root->val-lft->val,rgt->val-root->val);
+            return min(distance,min(minDiffInBST(root->right),minDiffInBST(root->left)));
+        }
+        else
+            return INT_MAX;
+            
+        
+    }
+```
+
 ## 973. K Closest Points to Origin
 there is a way to solve it in O(Nlogk) ways but using priority queue, i think this visited array idea is better because selection sort algorithm is used.
 ```
