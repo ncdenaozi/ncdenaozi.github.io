@@ -20,6 +20,21 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1550. Three Consecutive Odds
+simple and easy
+```
+bool threeConsecutiveOdds(vector<int>& arr) {
+        if(arr.size()<3)
+            return false;
+        
+        for(int i=0;i<arr.size()-2;i++){
+            if(arr[i]%2==1 and arr[i+1]%2==1 and arr[i+2]%2==1)
+                return true;
+        }
+        
+        return false;
+    }
+```
 ## 783. Minimum Distance Between BST Nodes
 ```
 int minDiffInBST(TreeNode* root) {
