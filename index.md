@@ -20,6 +20,28 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+
+## 1394. Find Lucky Integer in an Array
+since there is contrains in lucky number, we define a stable sized array
+```
+int findLucky(vector<int>& arr) {
+        int largest=-1;
+        int frequency[501];
+        for(int i=0;i<501;i++)
+            frequency[i]=0;
+        
+        for(auto i:arr)
+            frequency[i]++;
+        
+        for(int i=0;i<501;i++)
+            if(frequency[i]!=0)
+                if(frequency[i]==i)
+                    largest=max(largest,i);
+        
+        return largest;
+    }
+```
+
 ## 1550. Three Consecutive Odds
 simple and easy
 ```
