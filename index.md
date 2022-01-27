@@ -20,6 +20,30 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 747. Largest Number At Least Twice of Others
+```
+int dominantIndex(vector<int>& nums) {
+        int largest=INT_MIN;
+        int index=-1;
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]>largest){
+                largest=nums[i];
+                index=i;
+            }
+        }
+        
+        for(int x=0;x<nums.size();x++){
+            if(nums[x]!=largest){
+                if(largest<2*nums[x])
+                    return -1;
+            }
+        }
+        
+        return index;
+    }
+```
+
 ## 334. Increasing Triplet Subsequence
 O(n) approach, a is the smallest number and b is the current pivot that just large than a
 ```
