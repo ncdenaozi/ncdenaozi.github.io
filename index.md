@@ -20,6 +20,47 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 2028. Find Missing Observations
+the solution can be optimized but the principal is quite simple.
+```
+vector<int> missingRolls(vector<int>& rolls, int mean, int n) {
+        vector<int> result;
+        
+        int total=mean*((rolls.size()+n));
+        
+        int roll_sum=0;
+        for(auto i:rolls)
+            roll_sum+=i;
+        
+        if(roll_sum>total)
+            return result;
+        
+        int different=total-roll_sum;
+        
+        cout<<different<<endl;
+        if(different>6*n or different<n)
+            return result;
+            
+        for(int i=0;i<n;i++){
+            result.push_back((int)different/n);
+        }
+        
+        int result_sum=0;
+        for(auto i:result)
+            result_sum+=i;
+        int base=0;
+        while(result_sum<different){
+            if(result[base]<6){
+                result[base]+=1;
+                result_sum++;
+            }
+            else
+                base++;
+        }
+        return result; 
+    }
+```
+
 ## 747. Largest Number At Least Twice of Others
 ```
 int dominantIndex(vector<int>& nums) {
