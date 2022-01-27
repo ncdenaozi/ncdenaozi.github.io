@@ -20,6 +20,24 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 334. Increasing Triplet Subsequence
+O(n) approach, a is the smallest number and b is the current pivot that just large than a
+```
+bool increasingTriplet(vector<int>& nums) {
+        int a = INT_MAX, b = INT_MAX;
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums[i] < a)
+                a = nums[i];
+            else if(a < nums[i] && nums[i] < b )
+                b = nums[i];
+            else if(a<nums[i] && b < nums[i])
+                return true;
+        }
+        
+        return false;
+    }
+```
 
 ## 1394. Find Lucky Integer in an Array
 since there is contrains in lucky number, we define a stable sized array
