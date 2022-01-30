@@ -20,6 +20,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1909. Remove One Element to Make the Array Strictly Increasing
+brutal force
+```
+bool canBeIncreasing(vector<int>& nums) {
+        for(int i=0;i<nums.size();i++){
+            vector<int> temp=nums;
+            temp.erase(temp.begin()+i);
+            bool is_inc=true;
+            for(int i=0;i<temp.size()-1;i++){
+                if(temp[i]>=temp[i+1])
+                    is_inc=false;
+            }
+            if(is_inc==true)
+                return true;
+        }
+        
+        return false;
+    }
+```
+
 ## 898. Bitwise ORs of Subarrays
 i implement a brutal force solution that works in O(n2) times.
 ```
