@@ -20,6 +20,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1491. Average Salary Excluding the Minimum and Maximum Salary
+very simple O(n) way
+```
+double average(vector<int>& salary) {
+        if(salary.size()<=2)
+            return 0;
+        
+        int largest=INT_MIN;
+        int smallest=INT_MAX;
+        double sum=0;
+        for(auto i:salary){
+            largest=max(largest,i);
+            smallest=min(smallest,i);
+            sum+=i;
+        }
+        
+        return (sum-largest-smallest)/(salary.size()-2);
+    }
+```
+
 ## 1909. Remove One Element to Make the Array Strictly Increasing
 brutal force
 ```
