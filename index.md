@@ -20,6 +20,45 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 898. Bitwise ORs of Subarrays
+i implement a brutal force solution that works in O(n2) times.
+```
+int subarrayBitwiseORs(vector<int>& arr) {
+        set<int> result;
+        for(int len=1;len<=arr.size();len++){
+            for(int i=0;i<arr.size();i++){
+                int temp=arr[i];
+                if(i+len<=arr.size()){
+                    for(int x=0;x<len;x++){
+                        temp=temp|arr[i+x];
+                    }
+                }
+                result.insert(temp);
+            }
+        }
+        
+        return result.size();
+    }
+```
+a good and simple way is this, using a rolling updated set
+```
+ int subarrayBitwiseORs(vector<int>& arr) {
+        unordered_set<int> result;
+        unordered_set<int> last_set;
+        for(int i=0;i<arr.size();i++){
+            unordered_set<int> this_set;
+            for(auto s:last_set)
+                this_set.insert(s|arr[i]);
+            this_set.insert(arr[i]);
+            for(auto t:this_set)
+                result.insert(t);
+            last_set=this_set;
+        }
+        
+        return result.size();
+    }
+```
+
 ## 2028. Find Missing Observations
 the solution can be optimized but the principal is quite simple.
 ```
