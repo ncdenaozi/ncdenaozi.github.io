@@ -20,6 +20,36 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1859. Sorting the Sentence
+learn std.to_string() only return a string not char, and substr function is also returning a string not char.
+```
+string sortSentence(string s) {
+        string result;
+        vector<string> words;
+        string temp;
+        for(char c:s){
+            if(c!=' ')
+                temp+=c;
+            else{
+                words.push_back(temp);
+                temp="";
+            }
+        }
+        words.push_back(temp);
+        
+        for(int i=1;i<=words.size();i++){
+            for(auto w:words){
+                if(w[w.size()-1]==(char)('0'+i))
+                    result+=w.substr(0,w.size()-1);
+            }
+            if(i!=words.size())
+                result+=" ";
+        }
+        
+        return result;
+    }
+```
+
 ## 1491. Average Salary Excluding the Minimum and Maximum Salary
 very simple O(n) way
 ```
