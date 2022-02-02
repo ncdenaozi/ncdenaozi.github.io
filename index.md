@@ -20,6 +20,30 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1544. Make The String Great
+note that ansci 'a' is larger than 'A', using template and familiar with it
+```
+template<typename T>
+    T _makeGood(T s){
+        if(s.empty())
+            return s;
+        
+        for(int i=0;i<s.size();i++){
+            if(abs(s[i]-s[i+1])==(int)abs(('A'-'a'))){
+                s.erase(s.begin()+i+1);
+                s.erase(s.begin()+i);
+                return _makeGood(s);
+            }
+        }
+        
+        return s;
+    }
+    
+    string makeGood(string s) {
+        return _makeGood<string>(s);
+    }
+```
+
 ## 1859. Sorting the Sentence
 learn std.to_string() only return a string not char, and substr function is also returning a string not char.
 ```
