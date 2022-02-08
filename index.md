@@ -20,6 +20,42 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 238. Product of Array Except Self
+without division operation and can only allow O(N), this method simply trade space with time and use a left and right dp array
+```
+vector<int> productExceptSelf(vector<int>& nums) {
+        int len=nums.size();
+        
+        vector<int> result(len);    
+        vector<int> left(len);
+        vector<int> right(len);
+        
+        for(int i=0;i<len;i++){
+            if(i==0)
+                left[0]=nums[0];
+            else
+                left[i]=left[i-1]*nums[i];
+        }
+        
+        for(int i=len-1;i>=0;i--){
+            if(i==len-1)
+                right[len-1]=nums[len-1];
+            else
+                right[i]=right[i+1]*nums[i];
+        }
+        
+        for(int i=0;i<len;i++){
+            if(i==0)
+                result[i]=right[i+1];
+            else if(i==len-1)
+                result[i]=left[i-1];
+            else
+                result[i]=left[i-1]*right[i+1];
+        }
+        
+        return result;
+    }
+```
 ## 1544. Make The String Great
 note that ansci 'a' is larger than 'A', using template and familiar with it
 ```
