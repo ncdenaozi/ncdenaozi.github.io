@@ -20,6 +20,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1277. Count Square Submatrices with All Ones
+```
+int min_three(int &a, int &b, int &c){
+        return min(a,min(b,c));
+    }
+    
+    int countSquares(vector<vector<int>>& matrix) {
+        int result=0;
+        
+        for(int row=0;row<matrix.size();row++){
+            for(int col=0;col<matrix[0].size();col++){
+                if(matrix[row][col]==1 and row>=1 and col>=1){
+                    matrix[row][col]=min_three(matrix[row-1][col],matrix[row][col-1],matrix[row-1][col-1])+1;
+                }
+                result+=matrix[row][col];
+            }
+        }
+        return result;
+    }
+```
 ## 238. Product of Array Except Self
 without division operation and can only allow O(N), this method simply trade space with time and use a left and right dp array
 ```
