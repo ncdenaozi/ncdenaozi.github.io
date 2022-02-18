@@ -13,7 +13,7 @@
 New York, USA, but I was born and raised in Shanghai, China
 
 ## How to reach me?
-- check my profile at linkedin link [linkedin.com/in/lianhao-xue-078251220]
+- check my profile at linkedin link [https://linkedin.com/in/lianhao-xue-078251220]
 - Or send me email at ncdenaozi@outlook.com, u decide!
 
 Following will be recorded as my daily Leetcode step by step improvement, lets see if I can finish this lol
