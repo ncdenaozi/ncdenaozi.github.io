@@ -4,7 +4,7 @@
 - Lianhao Xue or written in simplified Chinese as 薛连昊
 - Specialized in Embedded system and hardware-software system development
 - Of course, I am familiar with C++, because a modest man can never master C++.
-- Have a deep base in network and network devices, including FPGA development and sequential logics.
+- Have a deep base in network and network devices, including FPGA development and verilog programming.
 - You can always view my public github repo at [https://github.com/ncdenaozi?tab=repositories](url)
 - Also an amateur photographer, travel and taking pictures.
 - eveonline player.
