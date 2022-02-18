@@ -21,7 +21,27 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
-
+## 96. Unique Binary Search Trees
+a very interesting DP solution with a clear mind that left and right subtree are calculated in memory, also called Catalan formula or composition 1 C N in math.
+```
+int numTrees(int n) {
+        int dp[n+1];
+        for(int i=0;i<n+1;i++){
+            dp[i]=0;
+        }
+        
+        dp[0]=1;
+        dp[1]=1;
+        
+        for(int i=2;i<=n;i++){
+            for(int j=0;j<i;j++){
+                dp[i]+=dp[j]*dp[i-j-1];
+            }
+        }
+        
+        return dp[n];
+    }
+```
 ## 1417. Reformat The String
 read and assemble, note that there is 4 circumstances and I list it all.
 ```
