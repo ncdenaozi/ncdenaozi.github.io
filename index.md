@@ -20,6 +20,34 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 402. Remove K Digits
+using a top down approach then find out that it supposed to be a bottom-up approach because one of the given input is like 1 million digits and using top-down approach will lead to memory leakage.
+```
+string removeKdigits(string num, int k) {
+        string another_num=num;
+        int smallest=INT_MAX;
+        while(k>0){
+            if(another_num.size()==1 and k>=1)
+                return "0";
+            if(smallest==0)
+                return "0";
+                
+            for(int i=0;i<another_num.size();i++){
+                string temp=another_num;
+                temp.erase(temp.begin()+i);
+                int erased_value=stoi(temp);
+                smallest=min(smallest,erased_value);
+            }
+            another_num=to_string(smallest);
+            
+            k--;
+        }
+        
+        return another_num;
+    }
+```    
+    
+
 ## 1277. Count Square Submatrices with All Ones
 ```
 int min_three(int &a, int &b, int &c){
