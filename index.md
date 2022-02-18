@@ -20,6 +20,51 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+
+## 1417. Reformat The String
+read and assemble, note that there is 4 circumstances and I list it all.
+```
+string reformat(string s) {
+        vector<char> char_list;
+        vector<char> int_list;
+        
+        for(char i:s){
+            if(i>='a' and i<='z')
+                char_list.push_back(i);
+            else if(i>='0' and i<='9')
+                int_list.push_back(i);
+            else
+                return "";
+        }
+            if(char_list.size()-int_list.size()==1){
+                string result="";
+                for(int i=0;i<char_list.size();i++){
+                    result+=char_list[i];
+                    if(i!=char_list.size()-1)
+                        result+=int_list[i];
+                }
+                return result;
+                
+            }else if(char_list.size()-int_list.size()==0){
+                string result="";
+                for(int i=0;i<char_list.size();i++){
+                    result+=char_list[i];
+                    result+=int_list[i];
+                }
+                return result;
+            }else if(char_list.size()-int_list.size()==-1){
+                string result="";
+                for(int i=0;i<int_list.size();i++){
+                    result+=int_list[i];
+                    if(i!=int_list.size()-1)
+                        result+=char_list[i];
+                }
+                return result;
+            }else
+                return "";
+    }
+```
+
 ## 402. Remove K Digits
 using a top down approach then find out that it supposed to be a bottom-up approach because one of the given input is like 1 million digits and using top-down approach will lead to memory leakage.
 ```
