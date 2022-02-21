@@ -21,6 +21,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 1624. Largest Substring Between Two Equal Characters
+o(n2) traverse
+```
+int maxLengthBetweenEqualCharacters(string s) {
+        if(s.size()==1)
+            return -1;
+        int longest=-1;
+        for(int i=0;i<s.size()-1;i++){
+            for(int j=s.size()-1;j>i;j--){
+                if(s[i]==s[j]){
+                    longest=max(longest,j-i-1);
+                    break;
+                }                   
+            }
+        }
+        
+        return longest;
+    }
+```
+
 ## 96. Unique Binary Search Trees
 a very interesting DP solution with a clear mind that left and right subtree are calculated in memory, also called Catalan formula or composition 1 C N in math.
 ```
