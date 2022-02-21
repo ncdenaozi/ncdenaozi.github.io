@@ -21,6 +21,22 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 2109. Adding Spaces to a String
+using vector<char> as container and iterator insert function, note that because of index is counted inside each iteration you should start insert from the backend of the string.
+```
+string addSpaces(string s, vector<int>& spaces) {
+        vector<char> vec;
+        
+        for(char c:s)
+            vec.push_back(c);
+        
+        for(int i=spaces.size()-1;i>=0;i--)
+            vec.insert(vec.begin()+spaces[i],' ');
+        
+        string result=string(vec.begin(),vec.end());
+        return result;
+    }
+```
 ## 1624. Largest Substring Between Two Equal Characters
 o(n2) traverse
 ```
