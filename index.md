@@ -22,6 +22,7 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
 ## 2150. Find All Lonely Numbers in the Array
+using hashmap, complexity is O(N)
 ```
 vector<int> findLonely(vector<int>& nums) {
         vector<int> result;
