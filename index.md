@@ -21,8 +21,26 @@ Following will be recorded as my daily Leetcode step by step improvement, lets s
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
 
+## 2150. Find All Lonely Numbers in the Array
+```
+vector<int> findLonely(vector<int>& nums) {
+        vector<int> result;
+        unordered_map<int,int> mp;
+        for(auto i:nums)
+            mp[i]++;
+        
+        for(auto i:nums)
+            if(mp[i]==1)
+                if(mp[i-1]==0 and mp[i+1]==0)
+                    result.push_back(i);
+        
+        return result;
+    }
+```
+
 ## 2109. Adding Spaces to a String
 using vector<char> as container and iterator insert function, note that because of index is counted inside each iteration you should start insert from the backend of the string.
+        
 ```
 string addSpaces(string s, vector<int>& spaces) {
         vector<char> vec;
@@ -37,6 +55,7 @@ string addSpaces(string s, vector<int>& spaces) {
         return result;
     }
 ```
+
 ## 1624. Largest Substring Between Two Equal Characters
 o(n2) traverse
 ```
