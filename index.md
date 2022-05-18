@@ -17,6 +17,8 @@ New York, USA, but I was born and raised in Shanghai, China
 - Or send me email at ncdenaozi@outlook.com, u decide!
 
 Following will be recorded as my daily Leetcode step by step improvement, lets see if I can finish this lol
+## UVM and Hardware DV notes
+[Link](./UVM.md)
 
 ## Leetcode notes
 Someone tells me that write these notes down will somehow give you effort to complete the whole leetcode list, I really feel impossible to complete all leetcode issues but anyway I will give it a try.
