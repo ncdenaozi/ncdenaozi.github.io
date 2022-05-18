@@ -18,10 +18,10 @@ New York, USA, but I was born and raised in Shanghai, China
 
 
 ## UVM and Hardware DV notes
-[Link](./UVM.md)
+[CLICK HERE FOR HARDWARE](./UVM.md)
 
 ## Leetcode notes
-[Link](./leetcode_note.md)
+[CLICK HERE FOR SOFTWARE](./leetcode_note.md)
 
 # TEMPLATE
 
