@@ -2,6 +2,7 @@
 
 ## Who am I?
 - Lianhao Xue or written in simplified Chinese as 薛连昊
+- Computer Programmer, Hardware Designer and Verification Engineer, Computer System Architecture
 - Specialized in Embedded system and hardware-software system development
 - Of course, I am familiar with C++, because a modest man can never master C++.
 - Have a deep base in network and network devices, including FPGA development and verilog programming.
