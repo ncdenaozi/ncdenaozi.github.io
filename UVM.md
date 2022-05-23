@@ -13,6 +13,19 @@
 
 ### UVM compoenenet hierarchy
 ![image](https://user-images.githubusercontent.com/52019188/169726303-30376e28-28d4-4e17-b527-9f07e1ffd6d6.png)
+![image](https://user-images.githubusercontent.com/52019188/169726556-c836ce32-1ddb-4a9b-8102-92c78bae1530.png)
+
+### UVM Factory
+The purpose of the UVM factory is to enable an object of one type to be substituted with an object of a derived type without changing the testbench structure or even the testbench code.
+
+Following steps need to be taken.
+- Registration
+- Default constructor
+- Component and Object Creation
+
+### UVM Phase
+![image](https://user-images.githubusercontent.com/52019188/169726888-2cc29e2d-64cb-4937-81cc-83f58db46898.png)
+
 
 
 ## UVM Advanced
