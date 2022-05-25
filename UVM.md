@@ -37,6 +37,8 @@ A Monitor communicates with DUT signals through a virtual interface, and contain
 ### UVM Agent
 ![image](https://user-images.githubusercontent.com/52019188/170361762-9390a955-30e9-4702-a7fc-7bab144878f9.png)
 
+- "BFM" stands for "Bus Functional Model", meaning strictly the driving and response to the DUT's interface, it has also taken in the loose sense connotations of verification. With the advent of newer technologies including assertions and UVM, that term "BFM" is a little passe and is replaced with terms that are more descriptives. And you are correct, these terms include drivers (the strict definition of a BFM), sequence items or transactions (e.g., READ, WRITE, IDLE, .. ) sequence (the flow of transactions, e.g., a READ, followed by 2 IDLEs, followed by a WRITE, and then a WRITE, etc...), monitors (keep track of what is going on), scoreboards (to do the checking of what is expected against what is happening), assertions (SVA provides a concise notation to specify requirements and properties of the design and does on the fly verification in simulation, and can be used in formal verification), tests (the selected set of environments to use for a simulation (drivers, sequences, parameters, etc).
+
 ## UVM Advanced
 
 ## UVM reference implementation
