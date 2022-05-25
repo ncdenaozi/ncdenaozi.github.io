@@ -29,6 +29,12 @@ Following steps need to be taken.
 ![image](https://user-images.githubusercontent.com/52019188/169726888-2cc29e2d-64cb-4937-81cc-83f58db46898.png)
 
 ### UVM Driver
+The UVM driver is responsible for communicating at the transaction level with the sequence via TLM (producer-comsumer relationship) communication with the sequencer and converting between the sequence_item on the transaction side and pin-level activity in communicating with the DUT via a virtual interface.
+
+### UVM Monitor
+A Monitor communicates with DUT signals through a virtual interface, and contains code that recognizes protocol patterns in the signal activity. Once a protocol pattern is recognized, a Monitor builds an abstract transaction model representing that activity, and broadcasts the transaction to any interested components. Monitor is alike Driver but always remain passive modules.
+
+### UVM Agent
 
 
 ## UVM Advanced
