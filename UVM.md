@@ -35,7 +35,7 @@ The UVM driver is responsible for communicating at the transaction level with th
 A Monitor communicates with DUT signals through a virtual interface, and contains code that recognizes protocol patterns in the signal activity. Once a protocol pattern is recognized, a Monitor builds an abstract transaction model representing that activity, and broadcasts the transaction to any interested components. Monitor is alike Driver but always remain passive modules.
 
 ### UVM Agent
-
+![image](https://user-images.githubusercontent.com/52019188/170361762-9390a955-30e9-4702-a7fc-7bab144878f9.png)
 
 ## UVM Advanced
 
