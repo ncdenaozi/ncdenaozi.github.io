@@ -53,8 +53,14 @@ The sequence items may consist of data fields that represent the following types
 - Analysis - i.e. Convenience fields which aid analysis - time stamps, rolling checksums etc
 
 ### UVM Configuration Database(uvm_config_db)
+There are two typical uses of the uvm_config_db. The first is to pass virtual interfaces from the DUT domain to the test, and the second is to pass configuration objects down through the testbench hierarchy.
 
-
+void uvm_config_db #( type T = int )::set( uvm_component cntxt , string inst_name , string field_name , T value );
+- T is the type of the resource, or element, being added - usually a virtual interface or a configuration object.
+- cntxt and inst_name together form a scope that is used to locate the resource within the database; it is formed by appending the instance name to the full hierarchical name of the context, i.e. {cntxt.get_full_name(),".",inst_name}.
+- field_name is the name given to the resource.
+- value is the actual value or reference that is put into the database.
+We also have the get method bit uvm_config_db #( type T = int )::get( uvm_component cntxt , string inst_name , string field_name , ref T value );
 
 ## UVM Advanced
 
