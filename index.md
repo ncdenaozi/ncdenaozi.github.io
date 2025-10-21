@@ -1,22 +1,22 @@
 # BLOG of Lianhao Xue
 
 ## Who am I?
-- Lianhao Xue or written in simplified Chinese as 薛连昊
-- Computer Programmer, Hardware Designer and Verification Engineer, Computer System Architecture
-- Specialized in Embedded system and hardware-software system development
-- Of course, I am familiar with C++, because a modest man can never master C++.
-- Have a deep base in network and network devices, including FPGA development and verilog programming.
-- You can always view my public github repo at [https://github.com/ncdenaozi?tab=repositories](url)
-- Also an amateur photographer, travel and taking pictures.
+- Lianhao Xue （薛连昊）
+- ASIC Designer Verification Engineer, Computer System Architecture, Computer Engineer
+- Specialized in Verification, ASIC, FPGA, Embedded system and hardware-software system development
+- Essential skills in Systemverilog, UVM, C, C++
+- Have a deep understanding in AMBA protocols, Cryptography algorithm, network and network devices
 - eveonline player.
 
 ## Where am I now?
-New York, USA, but I was born and raised in Shanghai, China
+Austin, Texas
 
 ## How to reach me?
 - check my profile at linkedin link [https://linkedin.com/in/lianhao-xue-078251220](url)
 - Or send me email at ncdenaozi@outlook.com, u decide!
 
+## PCIE notes
+[CLICK HERE FOR PCIE Learning note](./pcie_note.md)
 
 ## UVM and Hardware DV notes
 [CLICK HERE FOR HARDWARE](./UVM.md)
@@ -24,22 +24,3 @@ New York, USA, but I was born and raised in Shanghai, China
 ## Leetcode notes
 [CLICK HERE FOR SOFTWARE](./leetcode_note.md)
 
-# TEMPLATE
-
-Syntax highlighted code block
-```
-code
-```
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
