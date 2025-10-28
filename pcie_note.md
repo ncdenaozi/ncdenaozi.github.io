@@ -15,3 +15,6 @@ Summarize: Traditional PCI&PCI-X protocol is serial interface and it is hitting 
 * 2. Higher bandwidth per pin
 * 3. Strong Extendibility
 
+## PCIE topology
+<img width="761" height="631" alt="image" src="https://github.com/user-attachments/assets/cb847c40-fc25-4604-8fb5-bee305b9d7eb" />
+
