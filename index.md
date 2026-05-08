@@ -2,11 +2,12 @@
 
 ## Who am I?
 - Lianhao Xue （薛连昊）
-- ASIC Designer Verification Engineer, Computer System Architecture, Computer Engineer
+- ASIC Designer Verification Engineer, Computer System Architecture, System Engineer
 - Specialized in Verification, ASIC, FPGA, Embedded system and hardware-software system development
-- Essential skills in Systemverilog, UVM, C, C++
-- Have a deep understanding in AMBA protocols, Cryptography algorithm, network and network devices
-- eveonline player.
+- Essential programming skills in Systemverilog, UVM, C, C++, Python, Matlab
+- Have a deep understanding in AMBA protocols, Cryptography algorithm, network and network devices, pcie, peripherals
+- LifeLong athelete in running, swimming and cycling.
+- Eveonline player.
 
 ## Where am I now?
 Austin, Texas
